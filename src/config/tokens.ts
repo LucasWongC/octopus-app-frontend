@@ -1,0 +1,60 @@
+import { zeroAddress } from "viem";
+
+export const tokens: Currency[] = [
+  {
+    id: "BTC",
+    chain: "Bitcoin",
+    name: "Bitcoin",
+    symbol: "BTC",
+    decimals: 8,
+    address: zeroAddress,
+  },
+  {
+    id: "ETH",
+    chain: "Ethereum",
+    name: "Ether",
+    symbol: "ETH",
+    decimals: 18,
+    address: zeroAddress,
+  },
+  {
+    id: "ETH-USDC",
+    chain: "Ethereum",
+    name: "USD Coin",
+    symbol: "USDC",
+    decimals: 6,
+    address: "0x683513650cdb829B06a9C665f311b698F5d343B3",
+  },
+  {
+    id: "ETH-BTC",
+    chain: "Ethereum",
+    name: "Wrapped Bitcoin",
+    symbol: "WBTC",
+    decimals: 8,
+    address: "0x1721A077C78E65b91CD361Bc3FD544F35b3669a2",
+  },
+  {
+    id: "BNB",
+    chain: "BSC",
+    name: "BNB",
+    symbol: "BNB",
+    decimals: 18,
+    address: zeroAddress,
+  },
+  {
+    id: "BSC-USDT",
+    chain: "BSC",
+    name: "Tether USD",
+    symbol: "USDT",
+    decimals: 18,
+    address: "0xcBc8e59F7B989db68F7BEAA9F7c4C0456D38e0bf",
+  },
+  {
+    id: "BSC-BTC",
+    chain: "BSC",
+    name: "Wrapped Bitcoin",
+    symbol: "WBTC",
+    decimals: 8,
+    address: "0x46E26c1F1C3B83159685AFb094993f41ff59ff54",
+  },
+];

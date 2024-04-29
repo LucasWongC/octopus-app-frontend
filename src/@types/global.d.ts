@@ -1,0 +1,53 @@
+type Chain = "Bitcoin" | "Ethereum" | "BSC";
+
+type ChainConfig = {
+  chain: Chain;
+  bridge: `0x${string}`;
+  chainId: number;
+};
+
+type Currency = {
+  id: string;
+  chain: Chain;
+  address: string;
+  decimals: number;
+  name: string;
+  symbol: string;
+};
+
+type FeeResult = {
+  amountIn: number;
+  amountOut: number;
+  platformFee: number;
+  txFee: number;
+};
+
+type TransactionStatus =
+  | "Issued"
+  | "Deposited"
+  | "Sent"
+  | "Finished"
+  | "Expired";
+
+type Transaction = {
+  key: string;
+  status: TransactionStatus;
+
+  fromChain: Chain;
+  toChain: Chain;
+  amountIn: number;
+  amountOut: number;
+  toAddress: string;
+
+  depositAddress: string;
+  sendingTx: null;
+
+  issuedTime: number;
+  expireTime: number;
+};
+
+type Sig = {
+  r: string;
+  s: string;
+  v: number;
+};
