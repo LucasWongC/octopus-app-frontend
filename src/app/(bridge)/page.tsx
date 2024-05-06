@@ -195,7 +195,7 @@ export default function Page() {
       <div className="mt-6 rounded-2xl flex flex-col gap-3">
         <div className="mb-4">
           <label
-            className="block text-darkgrey-50 text-sm font-bold mb-2"
+            className="block text-darkgrey-50 text-sm font-bold mb-2 dark:text-darkgrey"
             htmlFor="toAddress"
           >
             To Address
