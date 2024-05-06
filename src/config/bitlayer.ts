@@ -20,7 +20,7 @@ export const mainnet = {
 } as const satisfies Chain;
 
 export const testnet = {
-  id: 200901,
+  id: 200810,
   name: "BitLayer Testnet",
   nativeCurrency: { name: "Bitcoin", symbol: "BTC", decimals: 18 },
   rpcUrls: {
@@ -32,4 +32,5 @@ export const testnet = {
     default: { name: "BTRScan", url: "https://testnet-scan.bitlayer.org" },
   },
   contracts: {},
+  testnet: true,
 } as const satisfies Chain;

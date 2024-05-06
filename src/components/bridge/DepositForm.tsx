@@ -16,7 +16,7 @@ import { waitForTransactionReceipt } from "wagmi/actions";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { getSign } from "@/helpers/api";
 import { evmChains } from "@/config/chain";
-import { erc20Abi } from "viem";
+import { erc20Abi, zeroAddress } from "viem";
 import BridgeAbi from "@/helpers/abi/Bridge.abi.json";
 
 type Props = {
@@ -57,6 +57,7 @@ const DepositForm: FC<Props> = ({ tx }) => {
 
   const handleApprove = useCallback(async () => {
     if (allowance == undefined || !chainConfig) {
+      console.log(allowance, chainConfig);
       return;
     }
 
@@ -89,13 +90,17 @@ const DepositForm: FC<Props> = ({ tx }) => {
   ]);
 
   const handleDeposit = useCallback(async () => {
-    if (!sig || allowance == undefined || !chainConfig) {
+    if (
+      !sig ||
+      (allowance == undefined && tx?.fromToken != zeroAddress) ||
+      !chainConfig
+    ) {
       return;
     }
 
     setIsProcessing(true);
     try {
-      if (allowance < BigInt(tx.amountIn)) {
+      if (allowance && allowance < BigInt(tx.amountIn)) {
         throw new Error("Should approve token before");
       }
 
@@ -106,6 +111,7 @@ const DepositForm: FC<Props> = ({ tx }) => {
         abi: BridgeAbi,
         functionName: "deposit",
         args: [tx.key, tx.fromToken, BigInt(tx.amountIn), sig],
+        value: tx?.fromToken == zeroAddress ? BigInt(tx.amountIn) : BigInt(0),
       });
       // await delay(2);
       await waitForTransactionReceipt(config, { hash });
@@ -181,20 +187,22 @@ const DepositForm: FC<Props> = ({ tx }) => {
               <button
                 type="button"
                 onClick={() =>
-                  (allowance ?? 0) < BigInt(tx.amountIn)
+                  chainConfig?.chainId !== chainId
+                    ? switchChain({ chainId: chainConfig?.chainId! })
+                    : allowance && allowance < BigInt(tx.amountIn)
                     ? handleApprove()
                     : handleDeposit()
                 }
                 className={`w-full px-4 py-2 rounded-md ${
-                  isProcessing || chainConfig?.chainId !== chainId
+                  isProcessing
                     ? "bg-gray-400 cursor-not-allowed"
                     : "bg-green-500 hover:bg-green-600"
                 } transition duration-300`}
-                disabled={isProcessing || chainConfig?.chainId !== chainId}
+                disabled={isProcessing}
               >
                 {chainConfig?.chainId !== chainId
                   ? "Invalid Network"
-                  : (allowance ?? 0) < BigInt(tx.amountIn)
+                  : allowance && allowance < BigInt(tx.amountIn)
                   ? "Approve"
                   : "Deposit"}
               </button>

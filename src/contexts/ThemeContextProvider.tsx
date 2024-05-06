@@ -19,7 +19,7 @@ type ThemeProviderProps = {
 const ThemeContext = createContext({} as ThemeProviderProps);
 
 const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [theme, setTheme] = useState<"dark" | "light">("light");
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
 
   const toggleTheme = useCallback(() => {
     if (theme == "light") {
