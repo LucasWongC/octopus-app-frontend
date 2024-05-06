@@ -61,7 +61,7 @@ function Header() {
             </Phrase>
 
             <Phrase
-              color={"#7F64C2"}
+              color={"#E69630"}
               margin={textMargin}
               size={textFontSize}
               font="basic-medium"

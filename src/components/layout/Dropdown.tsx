@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import cn from "classnames";
 import Image from "next/image";
 import { FaBars } from "react-icons/fa";
+import Link from "next/link";
 
 function Dropdown() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -47,22 +48,9 @@ function Dropdown() {
       >
         <ul className="py-2 text-sm text-cream">
           <li className="flex gap-2 justify-between items-center hover:bg-darkgrey-400">
-            {/* <a
-              href="/octopus"
-              className="block px-4 py-2 hover:bg-darkgrey-400"
-            >
-              White Paper
-            </a> */}
-
-            <p className="block px-4 py-2">White Paper</p>
-
-            <Image
-              src="/icons/lockDark.svg"
-              alt="lock"
-              className="w-5 h-5 mx-4"
-              width={50}
-              height={50}
-            />
+            <Link target="_blank" href="https://docs.octopusbridge.xyz/">
+              <p className="block px-4 py-2">White Paper</p>
+            </Link>
           </li>
           <li className="flex gap-2 justify-between items-center hover:bg-darkgrey-400">
             {/* <a href="#" className="block px-4 py-2 hover:bg-darkgrey-400">
