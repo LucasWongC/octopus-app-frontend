@@ -7,7 +7,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { createTransaction, estimateIn, estimateOut } from "@/helpers/api";
 import TokenSelect from "@/components/bridge/TokenSelect";
 import { validate } from "bitcoin-address-validation";
-import { isAddress, formatUnits } from "viem";
+import { isAddress, formatUnits, parseUnits } from "viem";
 import { tokens } from "@/config/tokens";
 import cn from "classnames";
 
@@ -45,7 +45,7 @@ export default function Page() {
       return;
     }
 
-    const amountIn = Number(fromAmount);
+    const amountIn = Number(fromAmount.replaceAll(",", ""));
     if (Number.isNaN(amountIn)) {
       return;
     }
@@ -55,7 +55,7 @@ export default function Page() {
       const data = await estimateOut(
         fromToken.id,
         toToken.id,
-        Math.round(amountIn * 100_000_000)
+        parseUnits(amountIn.toString(), fromToken.decimals).toString()
       );
       setFeeResult(data);
       setToAmount(formatUnits(BigInt(data.amountOut), toToken.decimals));
@@ -76,7 +76,7 @@ export default function Page() {
       return;
     }
 
-    const amountOut = Number(toAmount);
+    const amountOut = Number(toAmount?.replaceAll(",", ""));
     if (Number.isNaN(amountOut)) {
       return;
     }
@@ -86,7 +86,7 @@ export default function Page() {
       const data = await estimateIn(
         fromToken.id,
         toToken.id,
-        Math.round(amountOut * 100_000_000)
+        parseUnits(amountOut.toString(), toToken.decimals).toString()
       );
       setFeeResult(data);
       setFromAmount(formatUnits(BigInt(data.amountIn), fromToken.decimals));
@@ -103,7 +103,7 @@ export default function Page() {
   }, [onChangeOut]);
 
   const handleBridge = useCallback(async () => {
-    const amountIn = Number(fromAmount);
+    const amountIn = Number(fromAmount.replaceAll(",", ""));
     if (Number.isNaN(amountIn) || !toAddress || fromToken == toToken) {
       return;
     }
@@ -113,7 +113,7 @@ export default function Page() {
       const data = await createTransaction(
         fromToken.id,
         toToken.id,
-        Math.round(amountIn * 100_000_000),
+        parseUnits(amountIn.toString(), fromToken.decimals).toString(),
         toAddress
       );
       router.push(`/tx/${data.key}`);
@@ -145,8 +145,8 @@ export default function Page() {
               suffix=""
               value={fromAmount}
               onChange={(e) => {
-                setFromAmount(e.target.value);
                 setChangePoint(true);
+                setFromAmount(e.target.value);
               }}
             />
           </div>
@@ -184,8 +184,8 @@ export default function Page() {
               suffix=""
               value={toAmount}
               onChange={(e) => {
+                setChangePoint(false);
                 setToAmount(e.target.value);
-                setChangePoint(true);
               }}
             />
           </div>

@@ -9,7 +9,7 @@ type ChainConfig = {
 type Currency = {
   id: string;
   chain: Chain;
-  address: string;
+  address: `0x${string}`;
   decimals: number;
   name: string;
   symbol: string;
@@ -34,9 +34,11 @@ type Transaction = {
   status: TransactionStatus;
 
   fromChain: Chain;
+  fromToken: string;
   toChain: Chain;
-  amountIn: number;
-  amountOut: number;
+  toToken: string;
+  amountIn: string;
+  amountOut: string;
   toAddress: string;
 
   depositAddress: string;

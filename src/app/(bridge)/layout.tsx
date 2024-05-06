@@ -9,11 +9,11 @@ const BridgeLayout: FC<PropsWithChildren> = ({ children }) => {
 
       <div className="relative z-20 h-screen w-full block">
         <div className="flex justify-center items-center w-full h-full max-sm:scale-90">
-          <div className="bg-darkgrey p-6 max-sm:w-full rounded-2xl">
+          <div className="bg-darkgrey dark:bg-cream p-6 max-sm:w-full rounded-2xl">
             <header className="flex justify-between">
               {/* left side */}
               <div>
-                <h1 className="text-white text-2xl font-bold">
+                <h1 className="text-white dark:text-darkgrey text-2xl font-bold">
                   Bitcoin Bridge
                 </h1>
               </div>
@@ -27,7 +27,7 @@ const BridgeLayout: FC<PropsWithChildren> = ({ children }) => {
         </div>
       </div>
 
-      <CanvasBackground isFixed />
+      {/* <CanvasBackground isFixed /> */}
     </main>
   );
 };

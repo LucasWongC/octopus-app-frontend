@@ -1,12 +1,12 @@
 export const evmChains: ChainConfig[] = [
   {
     chain: "Ethereum",
-    bridge: "0xd1Fc0626AB39353ACCF6888332306a83B20b2888",
+    bridge: "0x391eD49Ae1CF6a2B60Ef533aDEeFCdF6C92DAeA7",
     chainId: 11155111,
   },
   {
     chain: "BSC",
-    bridge: "0xb2a0dE1D4422676E6306e66559b6C11b579a0eBA",
+    bridge: "0xcD411d9E5543B12b1d87DDDc1F949Bd5fc800253",
     chainId: 97,
   },
 ];

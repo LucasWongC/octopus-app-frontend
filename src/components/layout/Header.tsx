@@ -4,6 +4,9 @@ import Image from "next/image";
 import Dropdown from "./Dropdown";
 import { Char, Phrase } from "animatedtxt";
 import { useEffect, useState } from "react";
+import ToggleTheme from "./ToggleTheme";
+import { FaDiscord, FaTelegramPlane } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa6";
 
 function Header() {
   const octopus = "OCTOPUS";
@@ -45,7 +48,7 @@ function Header() {
 
           <a className="hidden md:flex gap-1" href="/">
             <Phrase
-              color="#28293d"
+              color={"#7F64C2"}
               margin={textMargin}
               size={textFontSize}
               duration={1.1}
@@ -58,7 +61,7 @@ function Header() {
             </Phrase>
 
             <Phrase
-              color="#28293d"
+              color={"#7F64C2"}
               margin={textMargin}
               size={textFontSize}
               font="basic-medium"
@@ -74,39 +77,35 @@ function Header() {
 
         <div className="flex items-center gap-5">
           <div className="w-8 sm:w-10">
-            <a href="https://x.com/" target="_blank" rel="noreferrer">
-              <Image
-                src="/icons/x.svg"
-                alt="Discord"
-                width={150}
-                height={150}
-              />
+            <a
+              href="https://twitter.com/octopusbridge_"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="p-2 rounded-full bg-[#7F64C2] text-cream">
+                <FaTwitter className="w-6 h-6" />
+              </div>
             </a>
           </div>
 
           <div className="w-8 sm:w-10">
             <a href="https://discord.gg/" target="_blank" rel="noreferrer">
-              <Image
-                src="/icons/discord.svg"
-                alt="Discord"
-                width={150}
-                height={150}
-              />
+              <div className="p-2 rounded-full bg-[#7F64C2] text-cream">
+                <FaDiscord className="w-6 h-6" />
+              </div>
             </a>
           </div>
 
           <div className="w-8 sm:w-10">
             <a href="https://telegram.org/" target="_blank" rel="noreferrer">
-              <Image
-                src="/icons/telegram.svg"
-                alt="Discord"
-                width={150}
-                height={150}
-              />
+              <div className="p-2 rounded-full bg-[#7F64C2] text-cream">
+                <FaTelegramPlane className="w-6 h-6" />
+              </div>
             </a>
           </div>
 
           <Dropdown />
+          <ToggleTheme />
         </div>
       </div>
     </header>

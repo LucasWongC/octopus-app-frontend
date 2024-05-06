@@ -1,8 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useRef, useState } from "react";
 import cn from "classnames";
 import Image from "next/image";
+import { FaBars } from "react-icons/fa";
 
 function Dropdown() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -30,19 +32,12 @@ function Dropdown() {
 
   return (
     <div ref={dropdownRef}>
-      <button
-        className="bg-black rounded-full p-3"
-        type="button"
+      <div
+        className="p-2 rounded-full bg-[#7F64C2] text-cream cursor-pointer"
         onClick={handleDropdown}
       >
-        <Image
-          src="/icons/menu.svg"
-          alt="Discord"
-          width={150}
-          height={150}
-          className="w-5 h-5"
-        />
-      </button>
+        <FaBars className="w-6 h-6" />
+      </div>
 
       <div
         className={cn(
@@ -51,23 +46,51 @@ function Dropdown() {
         )}
       >
         <ul className="py-2 text-sm text-cream">
-          <li>
-            <a
+          <li className="flex gap-2 justify-between items-center hover:bg-darkgrey-400">
+            {/* <a
               href="/octopus"
               className="block px-4 py-2 hover:bg-darkgrey-400"
             >
               White Paper
-            </a>
+            </a> */}
+
+            <p className="block px-4 py-2">White Paper</p>
+
+            <Image
+              src="/icons/lockDark.svg"
+              alt="lock"
+              className="w-5 h-5 mx-4"
+              width={50}
+              height={50}
+            />
           </li>
-          <li>
-            <a href="#" className="block px-4 py-2 hover:bg-darkgrey-400">
+          <li className="flex gap-2 justify-between items-center hover:bg-darkgrey-400">
+            {/* <a href="#" className="block px-4 py-2 hover:bg-darkgrey-400">
               Tokenomics
-            </a>
+            </a> */}
+            <p className="block px-4 py-2">Explorer</p>
+
+            <Image
+              src="/icons/lockDark.svg"
+              alt="lock"
+              className="w-5 h-5 mx-4"
+              width={50}
+              height={50}
+            />
           </li>
-          <li>
-            <a href="#" className="block px-4 py-2 hover:bg-darkgrey-400">
+          <li className="flex gap-2 justify-between items-center hover:bg-darkgrey-400">
+            {/* <a href="#" className="block px-4 py-2 hover:bg-darkgrey-400">
               Explorer
-            </a>
+            </a> */}
+            <p className="block px-4 py-2">Tokenomics</p>
+
+            <Image
+              src="/icons/lockDark.svg"
+              alt="lock"
+              width={50}
+              height={50}
+              className="w-5 h-5 mx-4"
+            />
           </li>
         </ul>
       </div>

@@ -3,7 +3,7 @@ import axios from "./axios";
 export const estimateOut = async (
   from: string,
   to: string,
-  amountIn: number
+  amountIn: string
 ) => {
   const { data } = await axios.post("/estimate/out", {
     from,
@@ -17,7 +17,7 @@ export const estimateOut = async (
 export const estimateIn = async (
   from: string,
   to: string,
-  amountOut: number
+  amountOut: string
 ) => {
   const { data } = await axios.post("/estimate/in", {
     from,
@@ -31,7 +31,7 @@ export const estimateIn = async (
 export const createTransaction = async (
   from: string,
   to: string,
-  amountIn: number,
+  amountIn: string,
   toAddress: string
 ) => {
   const { data } = await axios.post("/create", {
