@@ -57,4 +57,12 @@ export const tokens: Currency[] = [
     decimals: 8,
     address: "0x46E26c1F1C3B83159685AFb094993f41ff59ff54",
   },
+  {
+    id: "BitLayer",
+    chain: "BitLayer",
+    name: "Bitcoin",
+    symbol: "BTC",
+    decimals: 18,
+    address: zeroAddress,
+  },
 ];

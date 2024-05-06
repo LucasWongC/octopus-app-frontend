@@ -6,11 +6,17 @@ import { WagmiProvider } from "wagmi";
 import { mainnet, bsc, sepolia, bscTestnet } from "wagmi/chains";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { isDevelopment, walletConnectProjectId } from "@/config";
+import {
+  mainnet as bitLayerMainnet,
+  testnet as bitLayerTestnet,
+} from "@/config/bitlayer";
 
 const config = getDefaultConfig({
   appName: "Octopus",
   projectId: walletConnectProjectId,
-  chains: isDevelopment ? [sepolia, bscTestnet] : [mainnet, bsc],
+  chains: isDevelopment
+    ? [sepolia, bscTestnet, bitLayerTestnet]
+    : [mainnet, bsc, bitLayerMainnet],
   ssr: false, // If your dApp uses server side rendering (SSR)
 });
 

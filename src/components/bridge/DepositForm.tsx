@@ -18,7 +18,6 @@ import { getSign } from "@/helpers/api";
 import { evmChains } from "@/config/chain";
 import { erc20Abi } from "viem";
 import BridgeAbi from "@/helpers/abi/Bridge.abi.json";
-import { delay } from "@/helpers/utils";
 
 type Props = {
   tx: Transaction;
