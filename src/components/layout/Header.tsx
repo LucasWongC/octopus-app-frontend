@@ -5,7 +5,7 @@ import Dropdown from "./Dropdown";
 import { Char, Phrase } from "animatedtxt";
 import { useEffect, useState } from "react";
 import ToggleTheme from "./ToggleTheme";
-import { FaDiscord, FaTelegramPlane } from "react-icons/fa";
+import { FaTelegramPlane } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa6";
 import Link from "next/link";
 
@@ -89,13 +89,13 @@ function Header() {
             </a>
           </div>
 
-          <div className="w-8 sm:w-10">
+          {/* <div className="w-8 sm:w-10">
             <a href="https://discord.gg/" target="_blank" rel="noreferrer">
               <div className="p-2 rounded-full bg-[#7F64C2] text-cream">
                 <FaDiscord className="w-6 h-6" />
               </div>
             </a>
-          </div>
+          </div> */}
 
           <div className="w-8 sm:w-10">
             <a href="https://telegram.org/" target="_blank" rel="noreferrer">
