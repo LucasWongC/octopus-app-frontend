@@ -21,7 +21,8 @@ const WithdrawData: FC<Props> = ({ tx }) => {
       <div>
         <label className="text-sm font-bold">You Get</label>
         <p className="text-lg font-bold">
-          {formatUnits(BigInt(tx.amountOut), toToken.decimals)} {toToken.symbol}
+          {formatUnits(BigInt(tx.amountOut), toToken.decimals)} {toToken.symbol}{" "}
+          ({toToken.chain})
         </p>
       </div>
       <div>

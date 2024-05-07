@@ -10,6 +10,7 @@ import { validate } from "bitcoin-address-validation";
 import { isAddress, formatUnits, parseUnits } from "viem";
 import { tokens } from "@/config/tokens";
 import cn from "classnames";
+import toast from "react-hot-toast";
 
 export default function Page() {
   const router = useRouter();
@@ -117,7 +118,8 @@ export default function Page() {
         toAddress
       );
       router.push(`/tx/${data.key}`);
-    } catch (err) {
+    } catch (err: any) {
+      toast.error(err?.response?.data?.reason);
       console.log(err);
     } finally {
       setIsProcessing(false);
