@@ -53,6 +53,13 @@ const DepositForm: FC<Props> = ({ tx }) => {
     },
   });
 
+  const needApprove = useMemo(
+    () =>
+      depositToken.address != zeroAddress &&
+      (allowance ?? 0) < BigInt(tx.amountIn),
+    [allowance, depositToken.address, tx.amountIn]
+  );
+
   const { writeContractAsync } = useWriteContract();
 
   const handleApprove = useCallback(async () => {
@@ -189,7 +196,7 @@ const DepositForm: FC<Props> = ({ tx }) => {
                 onClick={() =>
                   chainConfig?.chainId !== chainId
                     ? switchChain({ chainId: chainConfig?.chainId! })
-                    : allowance && allowance < BigInt(tx.amountIn)
+                    : needApprove
                     ? handleApprove()
                     : handleDeposit()
                 }
@@ -202,7 +209,7 @@ const DepositForm: FC<Props> = ({ tx }) => {
               >
                 {chainConfig?.chainId !== chainId
                   ? "Invalid Network"
-                  : allowance && allowance < BigInt(tx.amountIn)
+                  : needApprove
                   ? "Approve"
                   : "Deposit"}
               </button>
