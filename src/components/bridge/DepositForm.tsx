@@ -80,7 +80,7 @@ const DepositForm: FC<Props> = ({ tx }) => {
         // await delay(2);
         await waitForTransactionReceipt(config, { hash });
         await refetchAllowance();
-        toast.success("Approving succeed!");
+        toast.success("Approved successfully!");
       }
     } catch (err: any) {
       console.log(err);

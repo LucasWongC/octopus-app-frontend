@@ -37,46 +37,44 @@ function Header() {
   return (
     <header className="fixed top-0 left-0 z-40 w-full px-6 py-4 sm:px-8 sm:py-3">
       <div className="flex items-center justify-between h-full">
-        <div className="flex items-center gap-1">
-          <Link href="/">
-            <div className="w-16 sm:w-20 ml-6">
-              <Image
-                src="/octopus.png"
-                alt="SquidRouter"
-                width={80}
-                height={80}
-              />
-            </div>
+        <Link className="flex items-center gap-1" href="/">
+          <div className="w-16 sm:w-20 ml-6">
+            <Image
+              src="/octopus.png"
+              alt="SquidRouter"
+              width={80}
+              height={80}
+            />
+          </div>
 
-            <div className="hidden md:flex gap-1">
-              <Phrase
-                color={"#7F64C2"}
-                margin={textMargin}
-                size={textFontSize}
-                duration={1.1}
-                delay={0}
-                cubicBezier={[0.68, 0.04, 0.45, 0.98]}
-              >
-                {octopus.split("").map((char, index) => (
-                  <Char key={index} char={char} />
-                ))}
-              </Phrase>
+          <div className="hidden md:flex gap-1">
+            <Phrase
+              color={"#7F64C2"}
+              margin={textMargin}
+              size={textFontSize}
+              duration={1.1}
+              delay={0}
+              cubicBezier={[0.68, 0.04, 0.45, 0.98]}
+            >
+              {octopus.split("").map((char, index) => (
+                <Char key={index} char={char} />
+              ))}
+            </Phrase>
 
-              <Phrase
-                color={"#E69630"}
-                margin={textMargin}
-                size={textFontSize}
-                font="basic-medium"
-                duration={1.1}
-                cubicBezier={[0.68, 0.04, 0.45, 0.98]}
-              >
-                {bridge.split("").map((char, index) => (
-                  <Char key={index} char={char} />
-                ))}
-              </Phrase>
-            </div>
-          </Link>
-        </div>
+            <Phrase
+              color={"#E69630"}
+              margin={textMargin}
+              size={textFontSize}
+              font="basic-medium"
+              duration={1.1}
+              cubicBezier={[0.68, 0.04, 0.45, 0.98]}
+            >
+              {bridge.split("").map((char, index) => (
+                <Char key={index} char={char} />
+              ))}
+            </Phrase>
+          </div>
+        </Link>
 
         <div className="flex items-center gap-5">
           <div className="w-8 sm:w-10">
