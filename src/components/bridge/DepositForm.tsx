@@ -80,9 +80,11 @@ const DepositForm: FC<Props> = ({ tx }) => {
         // await delay(2);
         await waitForTransactionReceipt(config, { hash });
         await refetchAllowance();
+        toast.success("Approving succeed!");
       }
-    } catch (err) {
+    } catch (err: any) {
       console.log(err);
+      toast.error(err?.shortMessage ?? err);
     }
 
     setIsProcessing(false);
@@ -122,8 +124,10 @@ const DepositForm: FC<Props> = ({ tx }) => {
       });
       // await delay(2);
       await waitForTransactionReceipt(config, { hash });
-    } catch (err) {
+      toast.success("Deposited successfully!");
+    } catch (err: any) {
       console.log(err);
+      toast.error(err?.shortMessage);
     }
 
     setIsProcessing(false);
