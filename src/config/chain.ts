@@ -18,16 +18,16 @@ export const evmChains: ChainConfig[] = [
 
 export const chains: Chain[] = ["Bitcoin", "Ethereum", "BSC", "BitLayer"];
 
-export const getChainSymbol = (chain: Chain) => {
+export const getChainIcon = (chain: Chain) => {
   switch (chain) {
     case "Bitcoin":
-      return "BTC";
+      return "btc.svg";
     case "Ethereum":
-      return "ETH";
+      return "eth.svg";
     case "BSC":
-      return "BNB";
+      return "bnb.svg";
     case "BitLayer":
-      return "BTCL";
+      return "lbtc.png";
     default:
       return undefined;
   }

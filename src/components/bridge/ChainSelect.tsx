@@ -1,4 +1,4 @@
-import { chains, getChainSymbol } from "@/config/chain";
+import { chains, getChainIcon } from "@/config/chain";
 import { Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
 import { FC, Fragment } from "react";
@@ -17,7 +17,7 @@ const ChainSelect: FC<Props> = ({ value, setValue }) => {
             <Image
               width={24}
               height={24}
-              src={`/icons/${getChainSymbol(value)?.toLowerCase()}.svg`}
+              src={`/icons/${getChainIcon(value)}`}
               className="w-6 h-6 shrink-0"
               alt="icon"
             />
@@ -65,9 +65,7 @@ const ChainSelect: FC<Props> = ({ value, setValue }) => {
                   >
                     <div className="p-1 w-7 h-7 bg-white rounded-full">
                       <Image
-                        src={`/icons/${getChainSymbol(
-                          value
-                        )?.toLowerCase()}.svg`}
+                        src={`/icons/${getChainIcon(chain)}`}
                         alt="icon"
                         width={12}
                         height={12}

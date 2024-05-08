@@ -24,7 +24,7 @@ const TokenSelect: FC<Props> = ({ chain, value, setValue }) => {
         <Image
           width={24}
           height={24}
-          src={`/icons/${value.symbol.toLowerCase()}.svg`}
+          src={`/icons/${value.icon}`}
           className="shrink-0 select-none w-6 h-6"
           alt="icon"
         />
@@ -42,7 +42,7 @@ const TokenSelect: FC<Props> = ({ chain, value, setValue }) => {
           <Image
             width={24}
             height={24}
-            src={`/icons/${token.symbol.toLowerCase()}.svg`}
+            src={`/icons/${token.icon}`}
             className="shrink-0 select-none w-6 h-6"
             alt="icon"
           />
