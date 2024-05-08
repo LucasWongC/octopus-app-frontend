@@ -89,6 +89,6 @@ export const tokens: Currency[] = [
     symbol: "BTC",
     decimals: 18,
     address: zeroAddress,
-    icon: "lbtc.png",
+    icon: "btc.svg",
   },
 ];
