@@ -1,6 +1,5 @@
 "use client";
 
-import { NumericFormat } from "react-number-format";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -11,12 +10,15 @@ import { isAddress, formatUnits, parseUnits } from "viem";
 import { tokens } from "@/config/tokens";
 import cn from "classnames";
 import toast from "react-hot-toast";
+import ChainSelect from "@/components/bridge/ChainSelect";
 
 export default function Page() {
   const router = useRouter();
   const [isCalculating, setIsCalculating] = useState<boolean>(false);
+  const [fromChain, setFromChain] = useState<Chain>("Bitcoin");
   const [fromToken, setFromToken] = useState<Currency>(tokens[0]);
-  const [fromAmount, setFromAmount] = useState<string>("0.1");
+  const [fromAmount, setFromAmount] = useState<string>("0");
+  const [toChain, setToChain] = useState<Chain>("Ethereum");
   const [toToken, setToToken] = useState<Currency>(tokens[1]);
   const [toAmount, setToAmount] = useState<string>();
   const [toAddress, setToAddress] = useState<string>();
@@ -50,6 +52,9 @@ export default function Page() {
     if (Number.isNaN(amountIn)) {
       return;
     }
+    if (amountIn <= 0) {
+      return;
+    }
 
     try {
       setIsCalculating(true);
@@ -79,6 +84,9 @@ export default function Page() {
 
     const amountOut = Number(toAmount?.replaceAll(",", ""));
     if (Number.isNaN(amountOut)) {
+      return;
+    }
+    if (amountOut <= 0) {
       return;
     }
 
@@ -126,104 +134,153 @@ export default function Page() {
     }
   }, [fromAmount, fromToken, router, toAddress, toToken]);
 
+  const handleSwapInput = useCallback(() => {
+    setFromChain(toChain);
+    setToChain(fromChain);
+    setFromToken(toToken);
+    setToToken(fromToken);
+  }, [fromChain, fromToken, toChain, toToken]);
+
+  useEffect(() => {
+    if (fromChain != fromToken?.chain) {
+      const defaultToken = tokens.filter(
+        (token) => token.chain == fromChain
+      )[0];
+      setFromToken(defaultToken);
+    }
+  }, [fromChain, fromToken?.chain]);
+
+  useEffect(() => {
+    if (toChain != toToken?.chain) {
+      const defaultToken = tokens.filter((token) => token.chain == toChain)[0];
+      setToToken(defaultToken);
+    }
+  }, [toChain, toToken?.chain]);
+
   return (
-    <section>
-      <div className="mt-6 px-5 py-4 rounded-2xl bg-darkgrey-400 flex flex-col gap-3">
-        <h6 className="text-darkgrey-50">From</h6>
-
-        <div className="flex items-center gap-2 justify-between">
-          <TokenSelect value={fromToken} setValue={setFromToken} />
-
-          <div>
-            <NumericFormat
-              placeholder="at least 0.00005"
-              className="bg-darkgrey-400 sm:min-w-48 w-full font-bold text-right text-darkgrey-50 outline-none"
-              allowNegative={false}
-              allowLeadingZeros={false}
-              decimalScale={5}
-              fixedDecimalScale={true}
-              thousandSeparator={true}
-              prefix=""
-              suffix=""
-              value={fromAmount}
-              onChange={(e) => {
-                setChangePoint(true);
-                setFromAmount(e.target.value);
-              }}
-            />
+    <div className="flex flex-col items-center z-[100] pt-1 px-2 xs:px-4 w-full max-w-[26rem] xs:max-w-full sm:w-[31rem] text-darkgrey">
+      <div className="w-full bg-white rounded-2xl shadow-lg">
+        <div className="flex flex-col p-2 w-full">
+          <div className="flex justify-between items-center bg-white h-9">
+            <label className="ml-px pl-3 text-base font-semibold">FROM</label>
+            <ChainSelect value={fromChain} setValue={setFromChain} />
+          </div>
+          <div className="mt-1">
+            <div
+              id="token-amount-view"
+              className="border-darkgrey-100 p-0 overflow-hidden transition-[height,border-color,border-radius,background] border hover:border-primary h-[100px] rounded-xl"
+            >
+              <div className="flex w-full flex-col pt-3 pb-1 pl-3 pr-2">
+                <div className="grid grid-cols-[1fr_auto] gap-4 items-end justify-between mb-1">
+                  <input
+                    role="textbox"
+                    contentEditable="true"
+                    inputMode="decimal"
+                    className="overflow-hidden box-content font-light leading-none whitespace-nowrap transition-[font-size,margin] ease-linear text-[60px] -mb-[3px] text-black focus-visible:outline-none"
+                    placeholder="0"
+                    value={fromAmount}
+                    onChange={(e) => {
+                      setFromAmount(e.target.value);
+                      setChangePoint(true);
+                    }}
+                  />
+                  <TokenSelect
+                    chain={fromChain}
+                    value={fromToken}
+                    setValue={setFromToken}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <div className="flex justify-center">
-        <button className="flex justify-center items-center w-8 h-8 mt-4 bg-red-700 text-white font-bold py-2 rounded-lg">
-          <Image
-            src="/icons/convert.svg"
-            alt="convert"
-            width={20}
-            height={20}
-            className="w-5 h-5"
-          />
+      <button
+        className="flex z-10 justify-center items-center -my-3 w-8 h-8 sm:-my-4 sm:w-10 sm:h-10 rounded-xl border-4 border-white cursor-pointer hoverSupported:hover:bg-primary-100 hoverSupported:active:bg-primary-200 bg-white"
+        onClick={handleSwapInput}
+      >
+        <div className="flex items-center justify-center shrink-0 select-none w-3 sm:w-4 h-3">
+          <Image width={18} height={22} src="/icons/convert.svg" alt="swap" />
+        </div>
+      </button>
+      <div className="w-full bg-white rounded-2xl shadow-lg">
+        <div className="flex flex-col p-2 w-full">
+          <div className="flex justify-between items-center bg-white h-9">
+            <label className="ml-px pl-3 text-base font-semibold">TO</label>
+            <ChainSelect value={toChain} setValue={setToChain} />
+          </div>
+          <div className="mt-1">
+            <div
+              id="token-amount-view"
+              className="border-darkgrey-100 p-0 overflow-hidden transition-[height,border-color,border-radius,background] border h-[100px] rounded-t-xl focus-within:shadow-inner focus-within:bg-gray-100 cursor-text"
+            >
+              <div className="flex w-full flex-col pt-3 pb-1 pl-3 pr-2">
+                <div className="grid grid-cols-[1fr_auto] items-end justify-between mb-1">
+                  <input
+                    role="textbox"
+                    contentEditable="true"
+                    inputMode="decimal"
+                    className="overflow-hidden box-content font-light leading-none whitespace-nowrap transition-[font-size,margin] ease-linear text-[60px] -mb-[3px] text-black focus-visible:outline-none"
+                    placeholder="0"
+                    value={toAmount}
+                    onChange={(e) => {
+                      setToAmount(e.target.value);
+                      setChangePoint(false);
+                    }}
+                  />
+                  <TokenSelect
+                    chain={toChain}
+                    value={toToken}
+                    setValue={setToToken}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="flex items-end mx-px px-3 text-sm font-medium overflow-hidden transition-[height] text-error h-0"></div>
+            <div
+              className={cn(
+                "relative flex flex-row justify-between mt-1 p-px leading-loose transition-[border-color,border-radius,background] rounded-b-lg border hoverSupported:hover:shadow-inner focus-within:shadow-inner focus-within:bg-gray-100 hover:border hover:border-primary",
+                isValidAddress ? "border-darkgrey-100" : "border-red-500"
+              )}
+            >
+              <label
+                className="my-1 mx-3 text-gray whitespace-nowrap"
+                htmlFor="address"
+              >
+                Recipient
+              </label>
+              <input
+                id="address"
+                type="text"
+                className="caret-primary-600 flex-1 text-right text-black bg-transparent border-none outline-none px-0 overflow-hidden text-ellipsis placeholder:text-gray"
+                autoComplete="off"
+                autoCapitalize="off"
+                autoCorrect="off"
+                spellCheck="false"
+                placeholder="0x000"
+                value={toAddress}
+                onChange={(e) => setToAddress(e.target.value)}
+              />
+            </div>
+            <div className="flex items-end mx-px px-3 text-sm font-medium text-error overflow-hidden transition-[height] h-0"></div>
+          </div>
+        </div>
+      </div>
+      <div className="flex w-full transition-[height] h-0"></div>
+      <div className="w-full mt-3 md:mb-10">
+        <button
+          type="button"
+          className="border border-transparent select-none transition-[background] w-full px-4 py-3 sm:py-3.5 text-lg font-medium rounded-2xl text-white bg-gradient-to-r from-green-400 to-green-600 disabled:from-red-400 disabled:to-red-600 outline-offset-4 disabled:opacity-60 disabled:cursor-not-allowed uppercase shadow-lg"
+          disabled={!fromAmount || !toAmount || isProcessing || !isValidAddress}
+          onClick={handleBridge}
+        >
+          {!fromAmount || fromAmount == "0"
+            ? "Please enter amount"
+            : isProcessing
+            ? "Swapping..."
+            : "Swap"}
         </button>
       </div>
-
-      <div className="mt-4 px-5 py-4 rounded-2xl bg-darkgrey-400 flex flex-col gap-3">
-        <h6 className="text-darkgrey-50">To</h6>
-
-        <div className="flex items-center gap-2 justify-between">
-          <TokenSelect value={toToken} setValue={setToToken} />
-
-          <div>
-            <NumericFormat
-              placeholder="at least 0.00005"
-              className="bg-darkgrey-400 sm:min-w-48 w-full font-bold text-right text-darkgrey-50 outline-none"
-              allowNegative={false}
-              allowLeadingZeros={false}
-              decimalScale={5}
-              fixedDecimalScale={true}
-              thousandSeparator={true}
-              prefix=""
-              suffix=""
-              value={toAmount}
-              onChange={(e) => {
-                setChangePoint(false);
-                setToAmount(e.target.value);
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-6 rounded-2xl flex flex-col gap-3">
-        <div className="mb-4">
-          <label
-            className="block text-darkgrey-50 text-sm font-bold mb-2 dark:text-darkgrey"
-            htmlFor="toAddress"
-          >
-            To Address
-          </label>
-          <input
-            className={cn(
-              "shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline bg-darkgrey-400 sm:min-w-48 font-bold text-darkgrey-50 outline-none",
-              isValidAddress ? "border-none" : "border-red-600"
-            )}
-            id="toAddress"
-            type="text"
-            placeholder="Address to receive"
-            value={toAddress}
-            onChange={(e) => setToAddress(e.target.value)}
-          />
-        </div>
-      </div>
-
-      <button
-        color={disableButton ? "default" : "secondary"}
-        disabled={disableButton}
-        onClick={() => handleBridge()}
-        className="disabled:cursor-not-allowed w-full font-bold mt-2 text-lg bg-green-500 disabled:bg-green-800 py-2 px-4 rounded-lg"
-      >
-        {isProcessing ? "SENDING..." : "SEND"}
-      </button>
-    </section>
+    </div>
   );
 }

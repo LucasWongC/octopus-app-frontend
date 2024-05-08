@@ -1,76 +1,57 @@
 import { tokens } from "@/config/tokens";
-import { Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
-import { FC, Fragment } from "react";
+import { FC, useMemo } from "react";
 
 type Props = {
+  chain: Chain;
   value: Currency;
   setValue: (value: Currency) => void;
 };
 
-const TokenSelect: FC<Props> = ({ value, setValue }) => {
+const TokenSelect: FC<Props> = ({ chain, value, setValue }) => {
+  const anotherTokens = useMemo(
+    () =>
+      tokens.filter((token) => token.chain == chain && token.id != value.id),
+    [chain, value.id]
+  );
+
   return (
-    <Menu as="div" className="relative inline-block text-left">
-      <div>
-        <Menu.Button className="inline-flex items-center gap-2 w-full cursor-pointer">
-          <div className="p-1 w-7 h-7 bg-white rounded-full">
-            <Image
-              src={`/icons/${value.symbol.toLowerCase()}.svg`}
-              alt="icon"
-              width={12}
-              height={12}
-              className="w-full h-full"
-            />
-          </div>
-          <div>
-            <h6 className="text-darkgrey-50 font-bold">
-              {value.symbol} ({value.chain})
-            </h6>
-          </div>
-        </Menu.Button>
-      </div>
-      <Transition
-        as={Fragment}
-        enter="transition ease-out duration-100"
-        enterFrom="transform opacity-0 scale-95"
-        enterTo="transform opacity-100 scale-100"
-        leave="transition ease-in duration-75"
-        leaveFrom="transform opacity-100 scale-100"
-        leaveTo="transform opacity-0 scale-95"
+    <div className="flex flex-row items-center mb-1 gap-1">
+      <button
+        type="button"
+        className="border-transparent select-none transition-[background] text-xs font-normal leading-loose rounded-full flex flex-row items-center border-0 p-0 h-6 text-black order-first"
       >
-        <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-darkgrey-600 shadow-lg ring-1 ring-black/5 focus:outline-none z-50">
-          <div className="px-1 py-1 ">
-            {tokens.map((token) => (
-              <Menu.Item key={token.id}>
-                {({ active }) => (
-                  <button
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm gap-2`}
-                    onClick={() => setValue(token)}
-                  >
-                    <div className="p-1 w-7 h-7 bg-white rounded-full">
-                      <Image
-                        src={`/icons/${token.symbol.toLowerCase()}.svg`}
-                        alt="icon"
-                        width={12}
-                        height={12}
-                        className="w-full h-full"
-                      />
-                    </div>
-                    <div>
-                      <h6 className="text-darkgrey-50 font-bold">
-                        {token.symbol} ({token.chain})
-                      </h6>
-                    </div>
-                  </button>
-                )}
-              </Menu.Item>
-            ))}
+        <Image
+          width={24}
+          height={24}
+          src={`/icons/${value.symbol.toLowerCase()}.svg`}
+          className="shrink-0 select-none w-6 h-6"
+          alt="icon"
+        />
+        <div className="flex items-center text-base font-medium transition-all pl-1.5 mt-px">
+          <span>{value.symbol}</span>
+        </div>
+      </button>
+      {anotherTokens.map((token) => (
+        <button
+          key={token.id}
+          type="button"
+          className="border-transparent select-none transition-[background] text-xs font-normal leading-loose rounded-full flex flex-row items-center border-0 p-0 h-6 text-gray opacity-60 hoverSupported:hover:opacity-60"
+          onClick={() => setValue(token)}
+        >
+          <Image
+            width={24}
+            height={24}
+            src={`/icons/${token.symbol.toLowerCase()}.svg`}
+            className="shrink-0 select-none w-6 h-6"
+            alt="icon"
+          />
+          <div className="flex items-center text-base font-medium transition-all w-0 overflow-hidden">
+            <span>{token.symbol}</span>
           </div>
-        </Menu.Items>
-      </Transition>
-    </Menu>
+        </button>
+      ))}
+    </div>
   );
 };
 
