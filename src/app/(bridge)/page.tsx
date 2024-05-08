@@ -39,8 +39,13 @@ export default function Page() {
   }, [toAddress, toToken]);
 
   const disableButton = useMemo(
-    () => isProcessing || isCalculating || !toAddress || !fromAmount,
-    [fromAmount, isCalculating, isProcessing, toAddress]
+    () =>
+      isProcessing ||
+      isCalculating ||
+      !toAddress ||
+      !fromAmount ||
+      !isValidAddress,
+    [fromAmount, isCalculating, isProcessing, isValidAddress, toAddress]
   );
 
   const onChangeIn = useCallback(async () => {
@@ -139,6 +144,7 @@ export default function Page() {
     setToChain(fromChain);
     setFromToken(toToken);
     setToToken(fromToken);
+    setChangePoint(true);
   }, [fromChain, fromToken, toChain, toToken]);
 
   useEffect(() => {
@@ -271,11 +277,13 @@ export default function Page() {
         <button
           type="button"
           className="border border-transparent select-none transition-[background] w-full px-4 py-3 sm:py-3.5 text-lg font-medium rounded-2xl text-white bg-gradient-to-r from-green-400 to-green-600 disabled:from-red-400 disabled:to-red-600 outline-offset-4 disabled:opacity-60 disabled:cursor-not-allowed uppercase shadow-lg"
-          disabled={!fromAmount || !toAmount || isProcessing || !isValidAddress}
+          disabled={disableButton}
           onClick={handleBridge}
         >
           {!fromAmount || fromAmount == "0"
             ? "Please enter amount"
+            : !isValidAddress
+            ? "Invalid address"
             : isProcessing
             ? "Swapping..."
             : "Swap"}
