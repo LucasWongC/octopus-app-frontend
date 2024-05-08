@@ -3,7 +3,14 @@
 import { FC, PropsWithChildren } from "react";
 import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { WagmiProvider } from "wagmi";
-import { mainnet, bsc, sepolia, bscTestnet } from "wagmi/chains";
+import {
+  mainnet,
+  bsc,
+  sepolia,
+  bscTestnet,
+  arbitrumSepolia,
+  arbitrum,
+} from "wagmi/chains";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { isDevelopment, walletConnectProjectId } from "@/config";
 import {
@@ -15,8 +22,8 @@ const config = getDefaultConfig({
   appName: "Octopus",
   projectId: walletConnectProjectId,
   chains: isDevelopment
-    ? [sepolia, bscTestnet, bitLayerTestnet]
-    : [mainnet, bsc, bitLayerMainnet],
+    ? [sepolia, arbitrumSepolia, bscTestnet, bitLayerTestnet]
+    : [mainnet, arbitrum, bsc, bitLayerMainnet],
   ssr: false, // If your dApp uses server side rendering (SSR)
 });
 

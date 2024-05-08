@@ -147,6 +147,11 @@ const DepositForm: FC<Props> = ({ tx }) => {
     []
   );
 
+  const handleSwitchNetwork = useCallback(() => {
+    console.log("called");
+    switchChain({ chainId: chainConfig?.chainId! });
+  }, [chainConfig?.chainId, switchChain]);
+
   useEffect(() => {
     if (!address || tx.fromChain == "Bitcoin") {
       return;
@@ -199,7 +204,7 @@ const DepositForm: FC<Props> = ({ tx }) => {
                 type="button"
                 onClick={() =>
                   chainConfig?.chainId !== chainId
-                    ? switchChain({ chainId: chainConfig?.chainId! })
+                    ? handleSwitchNetwork()
                     : needApprove
                     ? handleApprove()
                     : handleDeposit()
