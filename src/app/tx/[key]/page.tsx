@@ -59,7 +59,7 @@ export default function Page() {
       {tx ? (
         <div className="flex flex-col bg-darkgrey dark:bg-cream p-6 rounded-2xl bg-opacity-30 dark:bg-opacity-30">
           <label className="text-xl font-bold mb-6">{title}</label>
-          {(tx.status == "Issued" || !deposited) && (
+          {tx.status == "Issued" && !deposited && (
             <DepositForm tx={tx} setDeposited={setDeposited} />
           )}
           <div className="relative w-full my-10 flex justify-between items-center">

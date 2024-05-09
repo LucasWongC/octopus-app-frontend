@@ -31,7 +31,7 @@ const TransactionStatus: FC<Props> = ({ status, active, succeed }) => {
   return (
     <div className={`flex flex-col items-center justify-center`}>
       {active ? (
-        <div className="border-gray-300 h-6 w-6 animate-spin rounded-full border-2 border-t-blue-600" />
+        <div className="border-gray-300 h-6 w-6 animate-spin rounded-full border-2 border-t-blue-600 bg-white" />
       ) : succeed ? (
         <FaCheckSquare className="w-6 h-6 text-green-600" />
       ) : (
