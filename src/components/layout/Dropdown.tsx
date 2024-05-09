@@ -53,18 +53,9 @@ function Dropdown() {
             </Link>
           </li>
           <li className="flex gap-2 justify-between items-center hover:bg-darkgrey-400">
-            {/* <a href="#" className="block px-4 py-2 hover:bg-darkgrey-400">
-              Tokenomics
-            </a> */}
-            <p className="block px-4 py-2">Explorer</p>
-
-            <Image
-              src="/icons/lockDark.svg"
-              alt="lock"
-              className="w-5 h-5 mx-4"
-              width={50}
-              height={50}
-            />
+            <Link target="_blank" href="/explorer">
+              <p className="block px-4 py-2">Explorer</p>
+            </Link>
           </li>
         </ul>
       </div>

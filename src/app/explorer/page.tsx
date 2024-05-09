@@ -38,7 +38,7 @@ const ExplorerPage = () => {
   }, []);
 
   return (
-    <div className="overflow-hidden border-b border-gray-200 rounded-lg shadow bg-white dark:bg-darkgrey-600 dark:border-darkgrey-100">
+    <div className="overflow-hidden border-b border-gray-200 shadow bg-white dark:bg-darkgrey-600 dark:border-darkgrey-100">
       <div className="px-4 pt-5 sm:px-6 -mb-px">
         <div className="flex items-center h-8">
           <div className="text-xl font-medium leading-6 text-gray-900 dark:text-white">
@@ -186,7 +186,10 @@ const ExplorerPage = () => {
                     <td className="whitespace-nowrap px-2 md:px-3 sm:py-4 py-2">
                       <div className="flex lg:flex-col">
                         <div className="relative flex items-center self-start mr-1">
-                          {formatUnits(BigInt(tx.amountIn), fromToken.decimals)}
+                          {(+formatUnits(
+                            BigInt(tx.amountIn),
+                            fromToken.decimals
+                          )).toFixed(4)}
                         </div>
                         <div className="flex items-center">
                           <div className="flex items-center text-gray-500 cursor-pointer hover:text-white gap-1">
@@ -205,7 +208,10 @@ const ExplorerPage = () => {
                     <td className="whitespace-nowrap px-2 md:px-3 sm:py-4 py-2">
                       <div className="flex lg:flex-col">
                         <div className="relative flex items-center self-start mr-1">
-                          {formatUnits(BigInt(tx.amountOut), toToken.decimals)}
+                          {(+formatUnits(
+                            BigInt(tx.amountOut),
+                            toToken.decimals
+                          )).toFixed(4)}
                         </div>
                         <div className="flex items-center">
                           <div className="flex items-center text-gray-500 cursor-pointer hover:text-white gap-1">

@@ -77,7 +77,7 @@ function Header() {
         </Link>
 
         <div className="flex items-center gap-5">
-          <div className="w-8 sm:w-10">
+          <div className="w-10">
             <a
               href="https://twitter.com/octopusbridge_"
               target="_blank"
@@ -89,7 +89,7 @@ function Header() {
             </a>
           </div>
 
-          {/* <div className="w-8 sm:w-10">
+          {/* <div className="w-10">
             <a href="https://discord.gg/" target="_blank" rel="noreferrer">
               <div className="p-2 rounded-full bg-[#7F64C2] text-cream">
                 <FaDiscord className="w-6 h-6" />
@@ -97,7 +97,7 @@ function Header() {
             </a>
           </div> */}
 
-          <div className="w-8 sm:w-10">
+          <div className="w-10">
             <a href="https://telegram.org/" target="_blank" rel="noreferrer">
               <div className="p-2 rounded-full bg-[#7F64C2] text-cream">
                 <FaTelegramPlane className="w-6 h-6" />
