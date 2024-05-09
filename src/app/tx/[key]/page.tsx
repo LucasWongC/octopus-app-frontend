@@ -15,10 +15,11 @@ import toast from "react-hot-toast";
 export default function Page() {
   const { key } = useParams<{ key: string }>();
   const [tx, setTx] = useState<Transaction>();
+  const [deposited, setDeposited] = useState<boolean>(false);
   const now = useCurrentTime();
 
   useEffect(() => {
-    if (!key || tx?.status == "Finished" || (tx && now % 10 != 0)) {
+    if (!key || tx?.status == "Finished" || (tx && now % 5 != 0)) {
       return;
     }
 
@@ -58,13 +59,16 @@ export default function Page() {
       {tx ? (
         <div className="flex flex-col bg-darkgrey dark:bg-cream p-6 rounded-2xl bg-opacity-30 dark:bg-opacity-30">
           <label className="text-xl font-bold mb-6">{title}</label>
-          {tx.status == "Issued" && <DepositForm tx={tx} />}
+          {(tx.status == "Issued" || !deposited) && (
+            <DepositForm tx={tx} setDeposited={setDeposited} />
+          )}
           <div className="relative w-full my-10 flex justify-between items-center">
             {/* <div className="absolute left-0 w-full top-[14px] h-1 bg-gray-300 -z-10" /> */}
             <TransactionStatus
               status="Issued"
               active={tx.status == "Issued"}
               succeed={
+                deposited ||
                 tx.status == "Deposited" ||
                 tx.status == "Sent" ||
                 tx.status == "Finished"

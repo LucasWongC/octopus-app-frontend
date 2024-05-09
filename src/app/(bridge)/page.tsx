@@ -5,12 +5,13 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { createTransaction, estimateIn, estimateOut } from "@/helpers/api";
 import TokenSelect from "@/components/bridge/TokenSelect";
-import { validate } from "bitcoin-address-validation";
+import { Network, validate } from "bitcoin-address-validation";
 import { isAddress, formatUnits, parseUnits } from "viem";
 import { tokens } from "@/config/tokens";
 import cn from "classnames";
 import toast from "react-hot-toast";
 import ChainSelect from "@/components/bridge/ChainSelect";
+import { isDevelopment } from "@/config";
 
 export default function Page() {
   const router = useRouter();
@@ -32,7 +33,10 @@ export default function Page() {
     }
 
     if (toToken.chain == "Bitcoin") {
-      return validate(toAddress);
+      return validate(
+        toAddress,
+        isDevelopment ? Network.testnet : Network.mainnet
+      );
     } else {
       return isAddress(toAddress);
     }

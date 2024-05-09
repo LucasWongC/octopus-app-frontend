@@ -2,7 +2,7 @@
 
 import { FC, PropsWithChildren } from "react";
 import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
-import { WagmiProvider } from "wagmi";
+import { WagmiProvider, http } from "wagmi";
 import {
   mainnet,
   bsc,
@@ -24,6 +24,9 @@ const config = getDefaultConfig({
   chains: isDevelopment
     ? [sepolia, arbitrumSepolia, bscTestnet, bitLayerTestnet]
     : [mainnet, arbitrum, bsc, bitLayerMainnet],
+  transports: {
+    [sepolia.id]: http("https://endpoints.omniatech.io/v1/eth/sepolia/public"),
+  },
   ssr: false, // If your dApp uses server side rendering (SSR)
 });
 

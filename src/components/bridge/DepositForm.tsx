@@ -21,9 +21,10 @@ import BridgeAbi from "@/helpers/abi/Bridge.abi.json";
 
 type Props = {
   tx: Transaction;
+  setDeposited: (value: boolean) => void;
 };
 
-const DepositForm: FC<Props> = ({ tx }) => {
+const DepositForm: FC<Props> = ({ tx, setDeposited }) => {
   const { isConnected, address } = useAccount();
   const { switchChain } = useSwitchChain();
   const { openConnectModal } = useConnectModal();
@@ -41,11 +42,16 @@ const DepositForm: FC<Props> = ({ tx }) => {
     [tx]
   );
 
-  const { data: allowance, refetch: refetchAllowance } = useReadContract({
+  const {
+    data: allowance,
+    error,
+    refetch: refetchAllowance,
+  } = useReadContract({
     address: depositToken.address,
     abi: erc20Abi,
     functionName: "allowance",
     args: [address!, chainConfig?.bridge!],
+    chainId: chainConfig?.chainId,
     query: {
       select: (data) => {
         return data as bigint;
@@ -124,6 +130,7 @@ const DepositForm: FC<Props> = ({ tx }) => {
       });
       // await delay(2);
       await waitForTransactionReceipt(config, { hash });
+      setDeposited(true);
       toast.success("Deposited successfully!");
     } catch (err: any) {
       console.log(err);
@@ -135,6 +142,7 @@ const DepositForm: FC<Props> = ({ tx }) => {
     allowance,
     chainConfig,
     config,
+    setDeposited,
     sig,
     tx.amountIn,
     tx.fromToken,
