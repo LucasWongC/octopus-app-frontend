@@ -26,6 +26,11 @@ const config = getDefaultConfig({
     : [mainnet, arbitrum, bsc, bitLayerMainnet],
   transports: {
     [sepolia.id]: http("https://endpoints.omniatech.io/v1/eth/sepolia/public"),
+    [arbitrumSepolia.id]: http(
+      "https://public.stackup.sh/api/v1/node/arbitrum-sepolia"
+    ),
+    [bscTestnet.id]: http("https://bsc-testnet-rpc.publicnode.com"),
+    [bitLayerTestnet.id]: http("https://testnet-rpc.bitlayer.org"),
   },
   ssr: false, // If your dApp uses server side rendering (SSR)
 });
