@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { FaCheckSquare } from "react-icons/fa";
+import { FaRegCheckCircle } from "react-icons/fa";
 
 type Props = {
   status: TransactionStatus;
@@ -31,11 +31,11 @@ const TransactionStatus: FC<Props> = ({ status, active, succeed }) => {
   return (
     <div className={`flex flex-col items-center justify-center`}>
       {active ? (
-        <div className="border-gray-300 h-6 w-6 animate-spin rounded-full border-2 border-t-blue-600 bg-white" />
+        <div className="border-gray-300 h-8 w-8 animate-spin rounded-full border-2 border-t-blue-600" />
       ) : succeed ? (
-        <FaCheckSquare className="w-6 h-6 text-green-600" />
+        <FaRegCheckCircle className="w-8 h-8 text-green-600" />
       ) : (
-        <div className="border-gray-300 h-6 w-6 rounded-full border-2" />
+        <div className="border-gray-300 h-8 w-8 rounded-full border-2" />
       )}
       <p className="pt-2 font-bold">{succeed ? succeedName : statusName}</p>
     </div>
