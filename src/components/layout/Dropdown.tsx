@@ -53,7 +53,7 @@ function Dropdown() {
             </Link>
           </li>
           <li className="flex gap-2 justify-between items-center hover:bg-darkgrey-400">
-            <Link target="_blank" href="/explorer">
+            <Link href="/explorer">
               <p className="block px-4 py-2">Explorer</p>
             </Link>
           </li>
