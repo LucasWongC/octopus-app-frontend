@@ -35,7 +35,7 @@ function Header() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 z-40 w-full px-6 py-4 sm:px-8 sm:py-3">
+    <header className="fixed top-0 left-0 z-40 w-full px-6 py-4 sm:px-8 sm:py-3 backdrop-blur-md">
       <div className="flex items-center justify-between h-full">
         <Link className="flex items-center gap-1" href="/">
           <div className="w-16 sm:w-20 ml-6">
