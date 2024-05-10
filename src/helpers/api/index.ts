@@ -56,9 +56,13 @@ export const getSign = async (key: string, from: string) => {
   return data.sig as Sig;
 };
 
-export const getTxList = async (offset: number, limit: number = 10) => {
+export const getTxList = async (
+  offset: number,
+  limit: number = 10,
+  query: string = ""
+) => {
   const { data } = await axios.get(
-    `/retrieve/tx?offset=${offset}&limit=${limit}`
+    `/retrieve/tx?offset=${offset}&limit=${limit}&query=${query}`
   );
 
   const { total, txs } = data;
