@@ -11,6 +11,7 @@ import { useCallback, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaExternalLinkAlt, FaSearch } from "react-icons/fa";
 import { formatUnits } from "viem";
+import cn from "classnames";
 
 const ExplorerPage = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -167,7 +168,16 @@ const ExplorerPage = () => {
                       <td className="whitespace-nowrap px-2 md:px-3 sm:py-4 py-2 hidden sm:table-cell">
                         <div className="flex items-center">
                           <div className="flex relative flex-shrink-0">
-                            <span className="px-2 inline-flex text-sm leading-5 font-semibold rounded-full shadow-sm">
+                            <span
+                              className={cn(
+                                "px-2 inline-flex text-sm leading-5 font-semibold rounded-full shadow-sm",
+                                tx.status == "Issued" && "bg-purple-500",
+                                tx.status == "Deposited" && "bg-blue-500",
+                                tx.status == "Sent" && "bg-yellow-500",
+                                tx.status == "Finished" && "bg-green-500",
+                                tx.status == "Expired" && "bg-red-500"
+                              )}
+                            >
                               {tx.status}
                             </span>
                           </div>
