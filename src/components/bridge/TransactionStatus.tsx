@@ -37,7 +37,7 @@ const TransactionStatus: FC<Props> = ({ status, active, succeed }) => {
       ) : (
         <div className="border-gray-300 h-8 w-8 rounded-full border-2" />
       )}
-      <p className="pt-2 font-bold absolute left-1/2 -translate-x-1/2 -bottom-full">
+      <p className="pt-2 font-bold absolute left-1/2 -translate-x-1/2 -bottom-full whitespace-nowrap">
         {succeed ? succeedName : statusName}
       </p>
     </div>
