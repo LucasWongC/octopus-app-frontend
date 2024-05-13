@@ -8,7 +8,7 @@ const TransactionLayout: FC<PropsWithChildren> = ({ children }) => {
       <main>
         <Header />
 
-        <div className="relative z-20 h-screen w-full block">
+        <div className="relative z-20 h-screen w-full block pt-28">
           <div className="flex justify-center items-center w-full h-full max-sm:scale-90">
             {children}
           </div>
