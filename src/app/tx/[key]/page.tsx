@@ -11,6 +11,7 @@ import { useEffect, useMemo, useState } from "react";
 import { FaCopy } from "react-icons/fa";
 import CopyToClipboard from "react-copy-to-clipboard";
 import toast from "react-hot-toast";
+import Link from "next/link";
 
 export default function Page() {
   const { key } = useParams<{ key: string }>();
@@ -46,11 +47,11 @@ export default function Page() {
   }, [tx?.status]);
 
   return (
-    <div className="w-full flex flex-col max-w-2xl">
+    <div className="w-full flex flex-col max-w-xl">
       <div className="w-full flex justify-end items-center">
         <div className="flex items-center gap-1">
           <p>Transaction Id:</p>
-          <p>{truncate(key, 10)}</p>
+          <Link href="/explorer">{truncate(key, 10)}</Link>
           <CopyToClipboard text={key} onCopy={handleCopy}>
             <FaCopy className="w-4 h-4 cursor-pointer" />
           </CopyToClipboard>
@@ -62,7 +63,7 @@ export default function Page() {
           {tx.status == "Issued" && !deposited && (
             <DepositForm tx={tx} setDeposited={setDeposited} />
           )}
-          <div className="relative w-full my-10 flex justify-between items-center">
+          <div className="relative w-full mt-5 mb-10 flex justify-around items-center">
             {/* <div className="absolute left-0 w-full top-[14px] h-1 bg-gray-300 -z-10" /> */}
             <TransactionStatus
               status="Issued"

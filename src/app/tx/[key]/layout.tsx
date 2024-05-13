@@ -1,5 +1,4 @@
 import { FC, PropsWithChildren } from "react";
-import CanvasBackground from "@/components/layout/CanvasBackground";
 import Header from "@/components/layout/Header";
 import ContextProviders from "@/contexts";
 

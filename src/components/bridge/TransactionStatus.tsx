@@ -29,7 +29,7 @@ const TransactionStatus: FC<Props> = ({ status, active, succeed }) => {
   }
 
   return (
-    <div className={`flex flex-col items-center justify-center`}>
+    <div className={`relative flex flex-col items-center justify-center`}>
       {active ? (
         <div className="border-gray-300 h-8 w-8 animate-spin rounded-full border-2 border-t-blue-600" />
       ) : succeed ? (
@@ -37,7 +37,9 @@ const TransactionStatus: FC<Props> = ({ status, active, succeed }) => {
       ) : (
         <div className="border-gray-300 h-8 w-8 rounded-full border-2" />
       )}
-      <p className="pt-2 font-bold">{succeed ? succeedName : statusName}</p>
+      <p className="pt-2 font-bold absolute left-1/2 -translate-x-1/2 -bottom-full">
+        {succeed ? succeedName : statusName}
+      </p>
     </div>
   );
 };
