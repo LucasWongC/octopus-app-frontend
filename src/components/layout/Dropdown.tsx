@@ -47,7 +47,11 @@ function Dropdown() {
           { hidden: !isDropdownOpen }
         )}
       >
-        <ul className="py-2 text-sm text-cream">
+        <div
+          className="w-screen h-screen fixed left-0 top-0 z-10"
+          onClick={() => setIsDropdownOpen(false)}
+        />
+        <ul className="py-2 text-sm text-cream z-20">
           <li className="flex gap-2 justify-between items-center hover:bg-darkgrey-400">
             <Link
               target="_blank"
