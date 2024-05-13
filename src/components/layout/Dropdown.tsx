@@ -41,38 +41,35 @@ function Dropdown() {
         <FaBars className="w-6 h-6" />
       </div>
 
-      <div
-        className={cn(
-          "absolute top-20 right-6 sm:right-8 md:right-9 z-10 bg-darkgrey divide-y divide-gray-100 rounded-lg shadow w-44",
-          { hidden: !isDropdownOpen }
-        )}
-      >
-        <div
-          className="w-screen h-screen fixed left-0 top-0 z-10"
-          onClick={() => setIsDropdownOpen(false)}
-        />
-        <ul className="py-2 text-sm text-cream z-20">
-          <li className="flex gap-2 justify-between items-center hover:bg-darkgrey-400">
-            <Link
-              target="_blank"
-              href="https://docs.octopusbridge.xyz/"
-              className="w-full flex justify-between items-center"
-            >
-              <p className="block px-4 py-2">Documentation</p>
-              <IoDocumentTextOutline className="w-5 h-5 mr-4" />
-            </Link>
-          </li>
-          <li className="flex gap-2 justify-between items-center hover:bg-darkgrey-400">
-            <Link
-              href="/explorer"
-              className="w-full flex justify-between items-center"
-            >
-              <p className="block px-4 py-2">Explorer</p>
-              <BiSearchAlt className="w-5 h-5 mr-4" />
-            </Link>
-          </li>
-        </ul>
-      </div>
+      {isDropdownOpen && (
+        <div className="absolute top-20 right-6 sm:right-8 md:right-9 z-10 bg-darkgrey divide-y divide-gray-100 rounded-lg shadow w-44">
+          <div
+            className="w-screen h-screen fixed left-0 top-0 z-10"
+            onClick={() => setIsDropdownOpen(false)}
+          />
+          <ul className="relative py-2 text-sm text-cream z-20">
+            <li className="flex gap-2 justify-between items-center hover:bg-darkgrey-400">
+              <Link
+                target="_blank"
+                href="https://docs.octopusbridge.xyz/"
+                className="w-full flex justify-between items-center"
+              >
+                <p className="block px-4 py-2">Documentation</p>
+                <IoDocumentTextOutline className="w-5 h-5 mr-4" />
+              </Link>
+            </li>
+            <li className="flex gap-2 justify-between items-center hover:bg-darkgrey-400">
+              <Link
+                href="/explorer"
+                className="w-full flex justify-between items-center"
+              >
+                <p className="block px-4 py-2">Explorer</p>
+                <BiSearchAlt className="w-5 h-5 mr-4" />
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
