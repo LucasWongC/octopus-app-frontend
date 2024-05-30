@@ -1,5 +1,5 @@
+import Image from "next/image";
 import React, { FC } from "react";
-import { FaRegCheckCircle } from "react-icons/fa";
 
 type Props = {
   status: TransactionStatus;
@@ -33,7 +33,13 @@ const TransactionStatus: FC<Props> = ({ status, active, succeed }) => {
       {active ? (
         <div className="border-gray-300 h-8 w-8 animate-spin rounded-full border-2 border-t-blue-600" />
       ) : succeed ? (
-        <FaRegCheckCircle className="w-8 h-8 text-green-600" />
+        <Image
+          width={32}
+          height={32}
+          src="/icons/check.png"
+          className="w-8 h-8 text-green-600"
+          alt="check"
+        />
       ) : (
         <div className="border-gray-300 h-8 w-8 rounded-full border-2" />
       )}

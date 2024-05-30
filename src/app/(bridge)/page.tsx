@@ -168,7 +168,7 @@ export default function Page() {
   }, [toChain, toToken?.chain]);
 
   return (
-    <div className="flex flex-col items-center z-[100] pt-1 px-2 xs:px-4 w-full max-w-[26rem] xs:max-w-full sm:w-[31rem] text-darkgrey">
+    <div className="flex flex-col items-center z-[100] pt-1 px-2 xs:px-4 w-full max-w-[32rem] xs:max-w-full sm:w-[31rem] text-darkgrey">
       <div className="w-full bg-white rounded-2xl shadow-lg">
         <div className="flex flex-col p-2 w-full">
           <div className="flex justify-between items-center bg-white h-9">
@@ -210,7 +210,7 @@ export default function Page() {
         onClick={handleSwapInput}
       >
         <div className="flex items-center justify-center shrink-0 select-none w-3 sm:w-4 h-3">
-          <Image width={18} height={22} src="/icons/convert.svg" alt="swap" />
+          <Image width={18} height={22} src="/icons/transfer.png" alt="swap" />
         </div>
       </button>
       <div className="w-full bg-white rounded-2xl shadow-lg">
@@ -280,7 +280,7 @@ export default function Page() {
       <div className="w-full mt-3 md:mb-10">
         <button
           type="button"
-          className="border border-transparent select-none transition-[background] w-full px-4 py-3 sm:py-3.5 text-lg font-medium rounded-2xl text-white bg-gradient-to-r from-green-400 to-green-600 disabled:from-red-400 disabled:to-red-600 outline-offset-4 disabled:opacity-60 disabled:cursor-not-allowed uppercase shadow-lg"
+          className="border border-transparent select-none transition-[background] w-full px-4 py-3 sm:py-3.5 text-lg font-medium rounded-2xl text-white bg-gradient-to-r from-green-400 to-green-600 disabled:from-[#ff0000] disabled:to-[#ff0000] outline-offset-4 disabled:opacity-60 disabled:cursor-not-allowed uppercase shadow-lg"
           disabled={disableButton}
           onClick={handleBridge}
         >
