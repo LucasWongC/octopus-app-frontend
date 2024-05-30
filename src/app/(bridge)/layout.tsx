@@ -11,14 +11,13 @@ const BridgeLayout: FC<PropsWithChildren> = ({ children }) => {
           {children}
         </div>
       </div>
-      <div className="fixed bottom-10 right-10">
-        <Image
-          width={150}
-          height={150}
-          src="/proof-by-hacken.svg"
-          alt="proof by hacken"
-        />
-      </div>
+      <Image
+        width={150}
+        height={150}
+        src="/proof-by-hacken.svg"
+        alt="proof by hacken"
+        className="fixed bottom-10 md:right-10 md:translate-x-0 right-1/2 translate-x-1/2"
+      />
     </main>
   );
 };
