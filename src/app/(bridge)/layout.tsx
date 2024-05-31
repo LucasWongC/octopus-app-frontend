@@ -14,9 +14,16 @@ const BridgeLayout: FC<PropsWithChildren> = ({ children }) => {
       <Image
         width={150}
         height={150}
-        src="/proof-by-hacken.svg"
+        src="/proof-by-hacken-light.png"
         alt="proof by hacken"
-        className="fixed bottom-10 md:right-10 md:translate-x-0 right-1/2 translate-x-1/2"
+        className="fixed bottom-10 md:right-10 md:translate-x-0 right-1/2 translate-x-1/2 block dark:hidden"
+      />
+      <Image
+        width={150}
+        height={150}
+        src="/proof-by-hacken-dark.png"
+        alt="proof by hacken"
+        className="fixed bottom-10 md:right-10 md:translate-x-0 right-1/2 translate-x-1/2 dark:block hidden"
       />
     </main>
   );
