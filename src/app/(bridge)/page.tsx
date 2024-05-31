@@ -206,11 +206,11 @@ export default function Page() {
         </div>
       </div>
       <button
-        className="flex z-10 justify-center items-center -my-3 w-8 h-8 sm:-my-4 sm:w-10 sm:h-10 rounded-xl border-4 border-white cursor-pointer hoverSupported:hover:bg-primary-100 hoverSupported:active:bg-primary-200 bg-white"
+        className="flex z-10 justify-center items-center -my-3 w-10 h-10 sm:-my-4 sm:w-10 sm:h-10 rounded-xl border-4 border-white cursor-pointer hoverSupported:hover:bg-primary-100 hoverSupported:active:bg-primary-200 bg-white"
         onClick={handleSwapInput}
       >
-        <div className="flex items-center justify-center shrink-0 select-none w-3 sm:w-4 h-3">
-          <Image width={18} height={22} src="/icons/transfer.png" alt="swap" />
+        <div className="flex items-center justify-center shrink-0 select-none md:w-6 w-4 h-4 md:h-6">
+          <Image width={32} height={32} src="/icons/transfer.png" alt="swap" />
         </div>
       </button>
       <div className="w-full bg-white rounded-2xl shadow-lg">
