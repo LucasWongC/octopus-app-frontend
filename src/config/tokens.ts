@@ -9,6 +9,8 @@ export const tokens: Currency[] = [
     decimals: 8,
     address: zeroAddress,
     icon: "btc.svg",
+    max: 0.05,
+    min: 0.001,
   },
   {
     id: "ETH",
@@ -18,6 +20,8 @@ export const tokens: Currency[] = [
     decimals: 18,
     address: zeroAddress,
     icon: "eth.svg",
+    max: 1,
+    min: 0.01,
   },
   {
     id: "ETH-USDC",
@@ -27,6 +31,8 @@ export const tokens: Currency[] = [
     decimals: 6,
     address: "0x683513650cdb829B06a9C665f311b698F5d343B3",
     icon: "usdc.svg",
+    max: 3000,
+    min: 50,
   },
   {
     id: "ETH-BTC",
@@ -36,6 +42,8 @@ export const tokens: Currency[] = [
     decimals: 8,
     address: "0x1721A077C78E65b91CD361Bc3FD544F35b3669a2",
     icon: "wbtc.svg",
+    max: 0.05,
+    min: 0.001,
   },
   {
     id: "ARB-ETH",
@@ -45,6 +53,8 @@ export const tokens: Currency[] = [
     decimals: 18,
     address: zeroAddress,
     icon: "eth.svg",
+    max: 1,
+    min: 0.01,
   },
   {
     id: "ARB-USDC",
@@ -54,6 +64,8 @@ export const tokens: Currency[] = [
     decimals: 6,
     address: "0x09AD1Be1f647B5a137e24F08492feCddF625BBEB",
     icon: "usdc.svg",
+    max: 3000,
+    min: 50,
   },
   {
     id: "BNB",
@@ -63,6 +75,8 @@ export const tokens: Currency[] = [
     decimals: 18,
     address: zeroAddress,
     icon: "bnb.svg",
+    max: 10,
+    min: 0.1,
   },
   {
     id: "BSC-USDT",
@@ -72,6 +86,8 @@ export const tokens: Currency[] = [
     decimals: 18,
     address: "0xcBc8e59F7B989db68F7BEAA9F7c4C0456D38e0bf",
     icon: "usdt.svg",
+    max: 3000,
+    min: 50,
   },
   {
     id: "BSC-BTC",
@@ -81,6 +97,8 @@ export const tokens: Currency[] = [
     decimals: 8,
     address: "0x46E26c1F1C3B83159685AFb094993f41ff59ff54",
     icon: "wbtc.svg",
+    max: 0.05,
+    min: 0.001,
   },
   {
     id: "BitLayer",
@@ -90,5 +108,7 @@ export const tokens: Currency[] = [
     decimals: 18,
     address: zeroAddress,
     icon: "btc.svg",
+    max: 0.05,
+    min: 0.001,
   },
 ];

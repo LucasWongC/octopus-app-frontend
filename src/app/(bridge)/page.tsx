@@ -167,6 +167,20 @@ export default function Page() {
     }
   }, [toChain, toToken?.chain]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (fromToken && fromAmount) {
+        if (+fromAmount > fromToken.max) {
+          setFromAmount(fromToken.max.toString());
+        } else if (+fromAmount < fromToken.min) {
+          setFromAmount(fromToken.min.toString());
+        }
+      }
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [fromAmount, fromToken]);
+
   return (
     <div className="flex flex-col items-center z-[100] pt-1 px-2 xs:px-4 w-full max-w-[32rem] xs:max-w-full sm:w-[31rem] text-darkgrey">
       <div className="w-full bg-white rounded-2xl shadow-lg">
@@ -187,7 +201,7 @@ export default function Page() {
                     contentEditable="true"
                     inputMode="decimal"
                     className="overflow-hidden box-content font-light leading-none whitespace-nowrap transition-[font-size,margin] ease-linear text-[60px] -mb-[3px] text-black focus-visible:outline-none"
-                    placeholder="0"
+                    placeholder={`${fromToken.min} ~ ${fromToken.max}`}
                     value={fromAmount}
                     onChange={(e) => {
                       setFromAmount(e.target.value);

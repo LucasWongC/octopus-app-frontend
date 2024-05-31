@@ -14,6 +14,8 @@ type Currency = {
   name: string;
   symbol: string;
   icon: string;
+  max: number;
+  min: number;
 };
 
 type FeeResult = {
