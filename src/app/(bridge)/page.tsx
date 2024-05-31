@@ -121,7 +121,7 @@ export default function Page() {
   }, [onChangeOut]);
 
   const handleBridge = useCallback(async () => {
-    const amountIn = Number(fromAmount.replaceAll(",", ""));
+    const amountIn = Number(fromAmount?.replaceAll(",", ""));
     if (Number.isNaN(amountIn) || !toAddress || fromToken == toToken) {
       return;
     }
