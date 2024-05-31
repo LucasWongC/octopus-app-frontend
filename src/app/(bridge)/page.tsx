@@ -18,7 +18,7 @@ export default function Page() {
   const [isCalculating, setIsCalculating] = useState<boolean>(false);
   const [fromChain, setFromChain] = useState<Chain>("Bitcoin");
   const [fromToken, setFromToken] = useState<Currency>(tokens[0]);
-  const [fromAmount, setFromAmount] = useState<string>("0");
+  const [fromAmount, setFromAmount] = useState<string>();
   const [toChain, setToChain] = useState<Chain>("Ethereum");
   const [toToken, setToToken] = useState<Currency>(tokens[1]);
   const [toAmount, setToAmount] = useState<string>();
@@ -57,7 +57,7 @@ export default function Page() {
       return;
     }
 
-    const amountIn = Number(fromAmount.replaceAll(",", ""));
+    const amountIn = Number(fromAmount?.replaceAll(",", ""));
     if (Number.isNaN(amountIn)) {
       return;
     }
