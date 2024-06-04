@@ -12,14 +12,15 @@ import cn from "classnames";
 import toast from "react-hot-toast";
 import ChainSelect from "@/components/bridge/ChainSelect";
 import { isDevelopment } from "@/config";
+import { chains } from "@/config/chain";
 
 export default function Page() {
   const router = useRouter();
   const [isCalculating, setIsCalculating] = useState<boolean>(false);
-  const [fromChain, setFromChain] = useState<Chain>("Bitcoin");
+  const [fromChain, setFromChain] = useState<Chain>(tokens[0].chain);
   const [fromToken, setFromToken] = useState<Currency>(tokens[0]);
   const [fromAmount, setFromAmount] = useState<string>();
-  const [toChain, setToChain] = useState<Chain>("Ethereum");
+  const [toChain, setToChain] = useState<Chain>(tokens[1].chain);
   const [toToken, setToToken] = useState<Currency>(tokens[1]);
   const [toAmount, setToAmount] = useState<string>();
   const [toAddress, setToAddress] = useState<string>();

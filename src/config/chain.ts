@@ -22,10 +22,10 @@ export const evmChains: ChainConfig[] = [
 ];
 
 export const chains: Chain[] = [
-  "Bitcoin",
-  "Ethereum",
+  // "Bitcoin",
+  // "Ethereum",
   "Arbitrum",
-  "BSC",
+  // "BSC",
   "BitLayer",
 ];
 
