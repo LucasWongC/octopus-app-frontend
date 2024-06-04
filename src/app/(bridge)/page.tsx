@@ -83,7 +83,7 @@ export default function Page() {
   }, [changePoint, fromAmount, fromToken, toToken]);
 
   useEffect(() => {
-    const timer = setTimeout(onChangeIn, 500);
+    const timer = setTimeout(onChangeIn, 1000);
     return () => clearTimeout(timer);
   }, [onChangeIn]);
 
@@ -117,7 +117,7 @@ export default function Page() {
   }, [changePoint, toAmount, fromToken, toToken]);
 
   useEffect(() => {
-    const timer = setTimeout(onChangeOut, 500);
+    const timer = setTimeout(onChangeOut, 1000);
     return () => clearTimeout(timer);
   }, [onChangeOut]);
 
