@@ -39,7 +39,7 @@ export const getExplorerUrl = (chain: Chain) => {
       case "BSC":
         return "https://bscscan.com/";
       case "BitLayer":
-        return "https://scan.bitlayer.org/";
+        return "https://www.btrscan.com/";
       case "Bitcoin":
         return "https://mempool.space/";
     }
