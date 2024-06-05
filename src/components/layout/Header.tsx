@@ -98,7 +98,7 @@ function Header() {
           </div> */}
 
           <div className="w-10">
-            <a href="https://telegram.org/" target="_blank" rel="noreferrer">
+            <a href="https://t.me/octopusbridge" target="_blank" rel="noreferrer">
               <div className="p-2 rounded-full bg-[#7F64C2] text-cream">
                 <FaTelegramPlane className="w-6 h-6" />
               </div>
