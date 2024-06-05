@@ -62,7 +62,7 @@ export const tokens: Currency[] = [
     name: "USD Coin",
     symbol: "USDC",
     decimals: 6,
-    address: "0x09AD1Be1f647B5a137e24F08492feCddF625BBEB",
+    address: "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
     icon: "usdc.svg",
     max: 250,
     min: 25,
