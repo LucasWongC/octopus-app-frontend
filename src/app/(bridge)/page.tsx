@@ -20,8 +20,8 @@ export default function Page() {
   const [fromChain, setFromChain] = useState<Chain>(tokens[0].chain);
   const [fromToken, setFromToken] = useState<Currency>(tokens[0]);
   const [fromAmount, setFromAmount] = useState<string>();
-  const [toChain, setToChain] = useState<Chain>(tokens[1].chain);
-  const [toToken, setToToken] = useState<Currency>(tokens[1]);
+  const [toChain, setToChain] = useState<Chain>(tokens[2].chain);
+  const [toToken, setToToken] = useState<Currency>(tokens[2]);
   const [toAmount, setToAmount] = useState<string>();
   const [toAddress, setToAddress] = useState<string>();
   const [changePoint, setChangePoint] = useState<boolean>(true);
