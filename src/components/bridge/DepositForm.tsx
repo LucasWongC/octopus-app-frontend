@@ -189,14 +189,16 @@ const DepositForm: FC<Props> = ({ tx, setDeposited }) => {
         </p>
       </div>
       <div>
-        <label className="text-sm font-bold">To this address</label>
         {tx.fromChain == "Bitcoin" ? (
-          <div className="flex items-center gap-2">
-            <p className="text-lg font-bold">{tx.depositAddress}</p>
-            <CopyToClipboard text={tx.depositAddress} onCopy={handleCopy}>
-              <FaCopy className="w-4 h-4 cursor-pointer" />
-            </CopyToClipboard>
-          </div>
+          <>
+            <label className="text-sm font-bold">To this address</label>
+            <div className="flex items-center gap-2">
+              <p className="text-lg font-bold">{tx.depositAddress}</p>
+              <CopyToClipboard text={tx.depositAddress} onCopy={handleCopy}>
+                <FaCopy className="w-4 h-4 cursor-pointer" />
+              </CopyToClipboard>
+            </div>
+          </>
         ) : (
           <div className="flex w-full">
             {!isConnected ? (
