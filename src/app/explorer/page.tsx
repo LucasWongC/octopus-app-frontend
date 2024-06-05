@@ -141,6 +141,7 @@ const ExplorerPage = () => {
                   )[0];
 
                   if (!fromToken || !toToken) {
+                    console.log(tx);
                     return <></>;
                   }
 
