@@ -31,6 +31,10 @@ const config = getDefaultConfig({
     ),
     [bscTestnet.id]: http("https://bsc-testnet-rpc.publicnode.com"),
     [bitLayerTestnet.id]: http("https://testnet-rpc.bitlayer.org"),
+    [mainnet.id]: http("https://eth.llamarpc.com"),
+    [arbitrum.id]: http("https://api.zan.top/node/v1/arb/one/public"),
+    [bsc.id]: http("https://koge-rpc-bsc.48.club"),
+    [bitLayerMainnet.id]: http("https://rpc-bitlayer.rockx.com"),
   },
   ssr: false, // If your dApp uses server side rendering (SSR)
 });
