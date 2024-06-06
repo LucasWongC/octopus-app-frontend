@@ -30,16 +30,18 @@ export const chains: Chain[] = [
 ];
 
 export const getChainIcon = (chain: Chain) => {
-  switch (chain) {
-    case "Bitcoin":
+  const lowerCaseChainName = chain.toLowerCase();
+
+  switch (lowerCaseChainName) {
+    case "bitcoin":
       return "btc.svg";
-    case "Ethereum":
+    case "ethereum":
       return "eth.svg";
-    case "Arbitrum":
+    case "arbitrum":
       return "arb.svg";
-    case "BSC":
+    case "bsc":
       return "bnb.svg";
-    case "Bitlayer":
+    case "bitlayer":
       return "lbtc.png";
     default:
       return undefined;
