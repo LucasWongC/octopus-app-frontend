@@ -194,7 +194,7 @@ const ExplorerPage = () => {
                               className="w-5 h-5 shrink-0"
                               alt="icon"
                             />
-                            {tx.toChain}
+                            {toToken.chain}
                             <Link
                               href={`${getExplorerUrl(tx.toChain)}address/${
                                 tx.toAddress
@@ -234,7 +234,7 @@ const ExplorerPage = () => {
                                 className="w-5 h-5 shrink-0"
                                 alt="icon"
                               />
-                              {fromToken.symbol} ({tx.fromChain})
+                              {fromToken.symbol} ({fromToken.chain})
                             </div>
                           </div>
                         </div>
