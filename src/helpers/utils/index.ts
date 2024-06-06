@@ -25,7 +25,7 @@ export const getExplorerUrl = (chain: Chain) => {
         return "https://sepolia.arbiscan.io/";
       case "BSC":
         return "https://testnet.bscscan.com/";
-      case "BitLayer":
+      case "Bitlayer":
         return "https://testnet-scan.bitlayer.org/";
       case "Bitcoin":
         return "https://mempool.space/testnet/";
@@ -38,7 +38,7 @@ export const getExplorerUrl = (chain: Chain) => {
         return "https://arbiscan.io/";
       case "BSC":
         return "https://bscscan.com/";
-      case "BitLayer":
+      case "Bitlayer":
         return "https://scan.bitlayer.org/";
       case "Bitcoin":
         return "https://mempool.space/";

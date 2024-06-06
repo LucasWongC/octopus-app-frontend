@@ -15,7 +15,7 @@ export const evmChains: ChainConfig[] = [
     chainId: 97,
   },
   {
-    chain: "BitLayer",
+    chain: "Bitlayer",
     bridge: "0xCE2330E60c6cDf86eb77745a52334193c07F1Da9",
     chainId: 200810,
   },
@@ -26,7 +26,7 @@ export const chains: Chain[] = [
   "Ethereum",
   "Arbitrum",
   "BSC",
-  "BitLayer",
+  "Bitlayer",
 ];
 
 export const getChainIcon = (chain: Chain) => {
@@ -39,7 +39,7 @@ export const getChainIcon = (chain: Chain) => {
       return "arb.svg";
     case "BSC":
       return "bnb.svg";
-    case "BitLayer":
+    case "Bitlayer":
       return "lbtc.png";
     default:
       return undefined;
