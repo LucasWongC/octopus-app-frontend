@@ -207,13 +207,13 @@ const ExplorerPage = () => {
                             </Link>
                           </div>
                         </div>
-                        <div className="text-normal hover:text-white hidden lg:inline-block">
+                        <div className="text-normal hidden lg:inline-block">
                           {truncate(tx.toAddress, 8, 6)}
                         </div>
-                        <div className="text-normal hover:text-white hidden sm:inline-block lg:hidden">
+                        <div className="text-normal hidden sm:inline-block lg:hidden">
                           {truncate(tx.toAddress, 6, 4)}
                         </div>
-                        <div className="text-normal hover:text-white sm:hidden">
+                        <div className="text-normal sm:hidden">
                           {truncate(tx.toAddress, 6)}
                         </div>
                       </td>
@@ -226,7 +226,7 @@ const ExplorerPage = () => {
                             )).toFixed(4)}
                           </div>
                           <div className="flex items-center">
-                            <div className="flex items-center text-gray-500 cursor-pointer hover:text-white gap-1">
+                            <div className="flex items-center text-gray-500 cursor-pointer gap-1">
                               <Image
                                 width={20}
                                 height={20}
@@ -248,7 +248,7 @@ const ExplorerPage = () => {
                             )).toFixed(4)}
                           </div>
                           <div className="flex items-center">
-                            <div className="flex items-center text-gray-500 cursor-pointer hover:text-white gap-1">
+                            <div className="flex items-center text-gray-500 cursor-pointer gap-1">
                               <Image
                                 width={20}
                                 height={20}
