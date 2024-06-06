@@ -14,6 +14,7 @@ import ChainSelect from "@/components/bridge/ChainSelect";
 import { isDevelopment } from "@/config";
 import { evmChains } from "@/config/chain";
 import dynamic from "next/dynamic";
+import { useAccount } from "wagmi";
 
 const SwapButton = dynamic(() => import("@/components/bridge/SwapButton"), {
   ssr: false,
@@ -21,6 +22,7 @@ const SwapButton = dynamic(() => import("@/components/bridge/SwapButton"), {
 
 export default function Page() {
   const router = useRouter();
+  const { address } = useAccount();
 
   const [isCalculating, setIsCalculating] = useState<boolean>(false);
   const [fromChain, setFromChain] = useState<Chain>(tokens[0].chain);
@@ -193,6 +195,12 @@ export default function Page() {
 
     return () => clearTimeout(timer);
   }, [fromAmount, fromToken]);
+
+  useEffect(() => {
+    if (!toAddress?.length) {
+      setToAddress(address);
+    }
+  }, [address, toAddress]);
 
   return (
     <div className="flex flex-col items-center z-[100] pt-1 px-2 xs:px-4 w-full max-w-[32rem] xs:max-w-full sm:w-[31rem] text-darkgrey">

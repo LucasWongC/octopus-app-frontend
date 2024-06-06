@@ -256,7 +256,7 @@ const ExplorerPage = () => {
                                 className="w-5 h-5 shrink-0"
                                 alt="icon"
                               />
-                              {toToken.symbol} ({tx.toChain})
+                              {toToken.symbol} ({toToken.chain})
                             </div>
                           </div>
                         </div>
