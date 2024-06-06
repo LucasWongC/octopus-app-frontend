@@ -307,21 +307,21 @@ export default function Page() {
                 onChange={(e) => setToAddress(e.target.value)}
               />
             </div>
-            <div className="flex items-end mx-px px-3 text-sm font-medium text-error overflow-hidden transition-[height] h-0">
-              <SwapButton
-                fromChainId={fromChainId}
-                disableButton={disableButton}
-                fromAmount={fromAmount}
-                isProcessing={isProcessing}
-                isValidAddress={isValidAddress}
-                handleBridge={handleBridge}
-              />
-            </div>
+            <div className="flex items-end mx-px px-3 text-sm font-medium text-error overflow-hidden transition-[height] h-0"></div>
           </div>
         </div>
       </div>
       <div className="flex w-full transition-[height] h-0"></div>
-      <div className="w-full mt-3 md:mb-10"></div>
+      <div className="w-full mt-3 md:mb-10">
+        <SwapButton
+          fromChainId={fromChainId}
+          disableButton={disableButton}
+          fromAmount={fromAmount}
+          isProcessing={isProcessing}
+          isValidAddress={isValidAddress}
+          handleBridge={handleBridge}
+        />
+      </div>
     </div>
   );
 }
