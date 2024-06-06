@@ -12,15 +12,20 @@ import cn from "classnames";
 import toast from "react-hot-toast";
 import ChainSelect from "@/components/bridge/ChainSelect";
 import { isDevelopment } from "@/config";
-import { useAccount, useChainId, useSwitchChain } from "wagmi";
-import { useConnectModal } from "@rainbow-me/rainbowkit";
+import { useAccount, useChainId } from "wagmi";
 import { evmChains } from "@/config/chain";
+import dynamic from "next/dynamic";
+
+const ConnectWallet = dynamic(
+  () => import("@/components/bridge/ConnectWallet"),
+  {
+    ssr: false,
+  }
+);
 
 export default function Page() {
   const router = useRouter();
   const { isConnected } = useAccount();
-  const { switchChain } = useSwitchChain();
-  const { openConnectModal } = useConnectModal();
   const chainId = useChainId();
 
   const [isCalculating, setIsCalculating] = useState<boolean>(false);
@@ -40,11 +45,6 @@ export default function Page() {
       evmChains.filter((chain) => chain.chain == fromChain)?.[0]?.chainId ?? 0
     );
   }, [fromChain]);
-
-  const handleSwitchNetwork = useCallback(() => {
-    console.log("called");
-    switchChain({ chainId: fromChainId });
-  }, [fromChainId, switchChain]);
 
   const isValidAddress = useMemo(() => {
     if (!toAddress) {
@@ -312,15 +312,7 @@ export default function Page() {
       <div className="flex w-full transition-[height] h-0"></div>
       <div className="w-full mt-3 md:mb-10">
         {(!isConnected || fromChainId != chainId) && fromChainId ? (
-          <button
-            type="button"
-            onClick={() =>
-              !isConnected ? openConnectModal!() : handleSwitchNetwork()
-            }
-            className="w-full px-4 py-3 sm:py-3.5 text-lg bg-blue-500 text-white hover:bg-blue-600 transition rounded-2xl duration-300"
-          >
-            {!isConnected ? "Connect Wallet" : "Switch Network"}
-          </button>
+          <ConnectWallet fromChainId={fromChainId} />
         ) : (
           <button
             type="button"
