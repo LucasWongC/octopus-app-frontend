@@ -37,7 +37,9 @@ const DepositForm: FC<Props> = ({ tx, setDeposited }) => {
   const depositToken = useMemo(
     () =>
       tokens.filter(
-        (token) => token.chain == tx.fromChain && token.address == tx.fromToken
+        (token) =>
+          token.chain.toLowerCase() == tx.fromChain.toLowerCase() &&
+          token.address == tx.fromToken
       )[0],
     [tx]
   );
