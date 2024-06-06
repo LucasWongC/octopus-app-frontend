@@ -12,21 +12,15 @@ import cn from "classnames";
 import toast from "react-hot-toast";
 import ChainSelect from "@/components/bridge/ChainSelect";
 import { isDevelopment } from "@/config";
-import { useAccount, useChainId } from "wagmi";
 import { evmChains } from "@/config/chain";
 import dynamic from "next/dynamic";
 
-const ConnectWallet = dynamic(
-  () => import("@/components/bridge/ConnectWallet"),
-  {
-    ssr: false,
-  }
-);
+const SwapButton = dynamic(() => import("@/components/bridge/SwapButton"), {
+  ssr: false,
+});
 
 export default function Page() {
   const router = useRouter();
-  const { isConnected } = useAccount();
-  const chainId = useChainId();
 
   const [isCalculating, setIsCalculating] = useState<boolean>(false);
   const [fromChain, setFromChain] = useState<Chain>(tokens[0].chain);
@@ -305,31 +299,21 @@ export default function Page() {
                 onChange={(e) => setToAddress(e.target.value)}
               />
             </div>
-            <div className="flex items-end mx-px px-3 text-sm font-medium text-error overflow-hidden transition-[height] h-0"></div>
+            <div className="flex items-end mx-px px-3 text-sm font-medium text-error overflow-hidden transition-[height] h-0">
+              <SwapButton
+                fromChainId={fromChainId}
+                disableButton={disableButton}
+                fromAmount={fromAmount}
+                isProcessing={isProcessing}
+                isValidAddress={isValidAddress}
+                handleBridge={handleBridge}
+              />
+            </div>
           </div>
         </div>
       </div>
       <div className="flex w-full transition-[height] h-0"></div>
-      <div className="w-full mt-3 md:mb-10">
-        {(!isConnected || fromChainId != chainId) && fromChainId ? (
-          <ConnectWallet fromChainId={fromChainId} />
-        ) : (
-          <button
-            type="button"
-            className="border border-transparent select-none transition-[background] w-full px-4 py-3 sm:py-3.5 text-lg font-medium rounded-2xl text-white bg-gradient-to-r from-green-400 to-green-600 disabled:from-[#ff0000] disabled:to-[#ff0000] outline-offset-4 disabled:opacity-60 disabled:cursor-not-allowed uppercase shadow-lg"
-            disabled={disableButton}
-            onClick={handleBridge}
-          >
-            {!fromAmount || fromAmount == "0"
-              ? "Please enter amount"
-              : !isValidAddress
-              ? "Invalid address"
-              : isProcessing
-              ? "Swapping..."
-              : "Swap"}
-          </button>
-        )}
-      </div>
+      <div className="w-full mt-3 md:mb-10"></div>
     </div>
   );
 }

@@ -101,7 +101,7 @@ export const tokens: Currency[] = [
   //   min: 0.001,
   // },
   {
-    id: "BitLayer",
+    id: "Bitlayer",
     chain: "Bitlayer",
     name: "Bitcoin",
     symbol: "BTC",
