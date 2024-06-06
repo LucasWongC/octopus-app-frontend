@@ -2,7 +2,7 @@ import { type Chain } from "viem";
 
 export const mainnet = {
   id: 200901,
-  name: "BitLayer Mainnet",
+  name: "Bitlayer Mainnet",
   nativeCurrency: { name: "Bitcoin", symbol: "BTC", decimals: 18 },
   rpcUrls: {
     default: {
@@ -21,7 +21,7 @@ export const mainnet = {
 
 export const testnet = {
   id: 200810,
-  name: "BitLayer Testnet",
+  name: "Bitlayer Testnet",
   nativeCurrency: { name: "Bitcoin", symbol: "BTC", decimals: 18 },
   rpcUrls: {
     default: {

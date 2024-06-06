@@ -14,27 +14,27 @@ import {
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { isDevelopment, walletConnectProjectId } from "@/config";
 import {
-  mainnet as bitLayerMainnet,
-  testnet as bitLayerTestnet,
+  mainnet as bitlayerMainnet,
+  testnet as bitlayerTestnet,
 } from "@/config/bitlayer";
 
 const config = getDefaultConfig({
   appName: "Octopus",
   projectId: walletConnectProjectId,
   chains: isDevelopment
-    ? [sepolia, arbitrumSepolia, bscTestnet, bitLayerTestnet]
-    : [mainnet, arbitrum, bsc, bitLayerMainnet],
+    ? [sepolia, arbitrumSepolia, bscTestnet, bitlayerTestnet]
+    : [mainnet, arbitrum, bsc, bitlayerMainnet],
   transports: {
     [sepolia.id]: http("https://endpoints.omniatech.io/v1/eth/sepolia/public"),
     [arbitrumSepolia.id]: http(
       "https://public.stackup.sh/api/v1/node/arbitrum-sepolia"
     ),
     [bscTestnet.id]: http("https://bsc-testnet-rpc.publicnode.com"),
-    [bitLayerTestnet.id]: http("https://testnet-rpc.bitlayer.org"),
+    [bitlayerTestnet.id]: http("https://testnet-rpc.bitlayer.org"),
     [mainnet.id]: http("https://eth.llamarpc.com"),
     [arbitrum.id]: http("https://arbitrum.llamarpc.com"),
     [bsc.id]: http("https://koge-rpc-bsc.48.club"),
-    [bitLayerMainnet.id]: http("https://rpc-bitlayer.rockx.com"),
+    [bitlayerMainnet.id]: http("https://rpc-bitlayer.rockx.com"),
   },
   ssr: false, // If your dApp uses server side rendering (SSR)
 });
