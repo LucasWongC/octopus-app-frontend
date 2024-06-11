@@ -132,12 +132,13 @@ const ExplorerPage = () => {
                 {transactions.map((tx) => {
                   const fromToken = tokens.filter(
                     (token) =>
-                      token.chain == tx.fromChain &&
+                      token.chain.toLowerCase() == tx.fromChain.toLowerCase() &&
                       token.address == tx.fromToken
                   )[0];
                   const toToken = tokens.filter(
                     (token) =>
-                      token.chain == tx.toChain && token.address == tx.toToken
+                      token.chain.toLowerCase() == tx.toChain.toLowerCase() &&
+                      token.address == tx.toToken
                   )[0];
 
                   console.log(tx, fromToken, toToken);

@@ -37,7 +37,9 @@ const DepositForm: FC<Props> = ({ tx, setDeposited }) => {
   const depositToken = useMemo(
     () =>
       tokens.filter(
-        (token) => token.chain == tx.fromChain && token.address == tx.fromToken
+        (token) =>
+          token.chain.toLowerCase() == tx.fromChain.toLowerCase() &&
+          token.address == tx.fromToken
       )[0],
     [tx]
   );
@@ -169,7 +171,9 @@ const DepositForm: FC<Props> = ({ tx, setDeposited }) => {
 
   useEffect(() => {
     setChainConfig(
-      evmChains.filter((chain) => chain.chain == tx.fromChain)?.[0]
+      evmChains.filter(
+        (chain) => chain.chain.toLowerCase() == tx.fromChain.toLowerCase()
+      )?.[0]
     );
   }, [tx.fromChain]);
 

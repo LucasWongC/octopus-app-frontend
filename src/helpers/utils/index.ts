@@ -17,32 +17,34 @@ export const toLocalTime = (timestamp: number) => {
 export const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
 export const getExplorerUrl = (chain: Chain) => {
+  const chainNameLowerCase = chain.toLowerCase();
+
   if (isDevelopment) {
-    switch (chain) {
-      case "Ethereum":
+    switch (chainNameLowerCase) {
+      case "ethereum":
         return "https://sepolia.etherscan.io/";
-      case "Arbitrum":
+      case "arbitrum":
         return "https://sepolia.arbiscan.io/";
-      case "BSC":
+      case "bsc":
         return "https://testnet.bscscan.com/";
-      case "Bitlayer":
+      case "bitlayer":
         return "https://testnet-scan.bitlayer.org/";
-      case "Bitcoin":
+      case "bitcoin":
         return "https://mempool.space/testnet/";
-      case "LayerEdge":
+      case "layeredge":
         return "https://testnet-explorer.layeredge.io";
     }
   } else {
-    switch (chain) {
-      case "Ethereum":
+    switch (chainNameLowerCase) {
+      case "ethereum":
         return "https://etherscan.io/";
-      case "Arbitrum":
+      case "arbitrum":
         return "https://arbiscan.io/";
-      case "BSC":
+      case "bsc":
         return "https://bscscan.com/";
-      case "Bitlayer":
+      case "bitlayer":
         return "https://scan.bitlayer.org/";
-      case "Bitcoin":
+      case "bitcoin":
         return "https://mempool.space/";
     }
   }

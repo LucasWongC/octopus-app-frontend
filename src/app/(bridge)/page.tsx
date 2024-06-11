@@ -37,7 +37,9 @@ export default function Page() {
 
   const fromChainId = useMemo(() => {
     return (
-      evmChains.filter((chain) => chain.chain == fromChain)?.[0]?.chainId ?? 0
+      evmChains.filter(
+        (chain) => chain.chain.toLowerCase() == fromChain.toLowerCase()
+      )?.[0]?.chainId ?? 0
     );
   }, [fromChain]);
 

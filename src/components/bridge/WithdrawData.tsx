@@ -11,7 +11,9 @@ const WithdrawData: FC<Props> = ({ tx }) => {
   const toToken = useMemo(
     () =>
       tokens.filter(
-        (token) => token.chain == tx.toChain && token.address == tx.toToken
+        (token) =>
+          token.chain.toLowerCase() == tx.toChain.toLowerCase() &&
+          token.address == tx.toToken
       )[0],
     [tx]
   );
