@@ -1,4 +1,10 @@
-type Chain = "Bitcoin" | "Ethereum" | "Arbitrum" | "BSC" | "Bitlayer";
+type Chain =
+  | "Bitcoin"
+  | "Ethereum"
+  | "Arbitrum"
+  | "BSC"
+  | "Bitlayer"
+  | "LayerEdge";
 
 type ChainConfig = {
   chain: Chain;

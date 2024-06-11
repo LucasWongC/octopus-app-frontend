@@ -17,12 +17,13 @@ import {
   mainnet as bitlayerMainnet,
   testnet as bitlayerTestnet,
 } from "@/config/bitlayer";
+import { testnet as layerEdgeTestnet } from "@/config/layeredge";
 
 const config = getDefaultConfig({
   appName: "Octopus",
   projectId: walletConnectProjectId,
   chains: isDevelopment
-    ? [sepolia, arbitrumSepolia, bscTestnet, bitlayerTestnet]
+    ? [sepolia, arbitrumSepolia, bscTestnet, bitlayerTestnet, layerEdgeTestnet]
     : [mainnet, arbitrum, bsc, bitlayerMainnet],
   transports: {
     [sepolia.id]: http("https://endpoints.omniatech.io/v1/eth/sepolia/public"),
@@ -31,6 +32,7 @@ const config = getDefaultConfig({
     ),
     [bscTestnet.id]: http("https://bsc-testnet-rpc.publicnode.com"),
     [bitlayerTestnet.id]: http("https://testnet-rpc.bitlayer.org"),
+    [layerEdgeTestnet.id]: http("https://testnet-rpc.layeredge.io"),
     [mainnet.id]: http("https://eth.llamarpc.com"),
     [arbitrum.id]: http("https://api.zan.top/node/v1/arb/one/public"),
     [bsc.id]: http("https://koge-rpc-bsc.48.club"),

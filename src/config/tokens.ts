@@ -111,4 +111,15 @@ export const tokens: Currency[] = [
     max: 0.05,
     min: 0.001,
   },
+  {
+    id: "LayerEdge",
+    chain: "LayerEdge",
+    name: "Bitcoin",
+    symbol: "BTC",
+    decimals: 18,
+    address: zeroAddress,
+    icon: "btc.svg",
+    max: 0.05,
+    min: 0.001,
+  },
 ];

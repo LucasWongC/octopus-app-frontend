@@ -29,6 +29,8 @@ export const getExplorerUrl = (chain: Chain) => {
         return "https://testnet-scan.bitlayer.org/";
       case "Bitcoin":
         return "https://mempool.space/testnet/";
+      case "LayerEdge":
+        return "https://testnet-explorer.layeredge.io";
     }
   } else {
     switch (chain) {

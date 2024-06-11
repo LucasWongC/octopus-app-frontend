@@ -19,6 +19,11 @@ export const evmChains: ChainConfig[] = [
     bridge: "0xCE2330E60c6cDf86eb77745a52334193c07F1Da9",
     chainId: 200810,
   },
+  {
+    chain: "LayerEdge",
+    bridge: "0xCE2330E60c6cDf86eb77745a52334193c07F1Da9",
+    chainId: 3456,
+  },
 ];
 
 export const chains: Chain[] = [
@@ -27,6 +32,7 @@ export const chains: Chain[] = [
   "Arbitrum",
   "BSC",
   "Bitlayer",
+  "LayerEdge",
 ];
 
 export const getChainIcon = (chain: Chain) => {
@@ -41,6 +47,8 @@ export const getChainIcon = (chain: Chain) => {
       return "bnb.svg";
     case "Bitlayer":
       return "lbtc.png";
+    case "LayerEdge":
+      return "le.svg";
     default:
       return undefined;
   }
