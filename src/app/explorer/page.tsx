@@ -140,6 +140,8 @@ const ExplorerPage = () => {
                       token.chain == tx.toChain && token.address == tx.toToken
                   )[0];
 
+                  console.log(tx, fromToken, toToken);
+
                   return (
                     <tr
                       key={tx.key}
