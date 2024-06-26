@@ -24,11 +24,11 @@ export default function Page() {
   const chainId = useChainId();
 
   const [isCalculating, setIsCalculating] = useState<boolean>(false);
-  const [fromChain, setFromChain] = useState<Chain>("Bitcoin");
-  const [fromToken, setFromToken] = useState<Currency>(tokens[0]);
+  const [fromChain, setFromChain] = useState<Chain>("Ethereum");
+  const [fromToken, setFromToken] = useState<Currency>(tokens[1]);
   const [fromAmount, setFromAmount] = useState<string>();
-  const [toChain, setToChain] = useState<Chain>("Ethereum");
-  const [toToken, setToToken] = useState<Currency>(tokens[1]);
+  const [toChain, setToChain] = useState<Chain>("Arbitrum");
+  const [toToken, setToToken] = useState<Currency>(tokens[2]);
   const [toAmount, setToAmount] = useState<string>();
   const [toAddress, setToAddress] = useState<string>();
   const [changePoint, setChangePoint] = useState<boolean>(true);
