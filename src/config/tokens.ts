@@ -122,4 +122,15 @@ export const tokens: Currency[] = [
     max: 0.05,
     min: 0.001,
   },
+  {
+    id: "GMNetwork",
+    chain: "GMNetwork",
+    name: "Ethereum",
+    symbol: "ETH",
+    decimals: 18,
+    address: zeroAddress,
+    icon: "eth.svg",
+    max: 0.05,
+    min: 0.001,
+  },
 ];

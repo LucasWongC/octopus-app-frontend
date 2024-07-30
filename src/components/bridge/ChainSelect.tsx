@@ -1,4 +1,4 @@
-import { chains, getChainIcon } from "@/config/chain";
+import { chains, evmChains, getChainIcon } from "@/config/chain";
 import { Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
 import { FC, Fragment } from "react";
@@ -9,6 +9,8 @@ type Props = {
 };
 
 const ChainSelect: FC<Props> = ({ value, setValue }) => {
+  const selectedEvmChain = evmChains.filter((item) => item.chain == value)?.[0];
+
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -21,7 +23,9 @@ const ChainSelect: FC<Props> = ({ value, setValue }) => {
               className="w-6 h-6 shrink-0"
               alt="icon"
             />
-            <div className="font-medium truncate ml-2">{value}</div>
+            <div className="font-medium truncate ml-2">
+              {selectedEvmChain?.name ?? value}
+            </div>
             <div className="mr-0.5">
               <div className="flex items-center justify-center shrink-0 select-none w-5 h-5 ml-1 -mr-1 text-gray">
                 <svg
@@ -54,31 +58,38 @@ const ChainSelect: FC<Props> = ({ value, setValue }) => {
       >
         <Menu.Items className="absolute right-0 mt-2 w-40 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none z-50">
           <div className="px-1 py-1 ">
-            {chains.map((chain) => (
-              <Menu.Item key={chain}>
-                {({ active }) => (
-                  <button
-                    className={`${
-                      active ? "bg-violet-500" : ""
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm gap-2`}
-                    onClick={() => setValue(chain)}
-                  >
-                    <div className="p-1 w-7 h-7 bg-white rounded-full">
-                      <Image
-                        src={`/icons/${getChainIcon(chain)}`}
-                        alt="icon"
-                        width={12}
-                        height={12}
-                        className="w-full h-full"
-                      />
-                    </div>
-                    <div>
-                      <h6 className="text-black font-bold">{chain}</h6>
-                    </div>
-                  </button>
-                )}
-              </Menu.Item>
-            ))}
+            {chains.map((chain) => {
+              const evmChain = evmChains.filter(
+                (item) => item.chain == chain
+              )?.[0];
+              return (
+                <Menu.Item key={chain}>
+                  {({ active }) => (
+                    <button
+                      className={`${
+                        active ? "bg-violet-500" : ""
+                      } group flex w-full items-center rounded-md px-2 py-2 text-sm gap-2`}
+                      onClick={() => setValue(chain)}
+                    >
+                      <div className="p-1 w-7 h-7 bg-white rounded-full">
+                        <Image
+                          src={`/icons/${getChainIcon(chain)}`}
+                          alt="icon"
+                          width={12}
+                          height={12}
+                          className="w-full h-full"
+                        />
+                      </div>
+                      <div>
+                        <h6 className="text-black font-bold">
+                          {evmChain?.name ?? chain}
+                        </h6>
+                      </div>
+                    </button>
+                  )}
+                </Menu.Item>
+              );
+            })}
           </div>
         </Menu.Items>
       </Transition>

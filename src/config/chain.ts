@@ -3,26 +3,37 @@ export const evmChains: ChainConfig[] = [
     chain: "Ethereum",
     bridge: "0x391eD49Ae1CF6a2B60Ef533aDEeFCdF6C92DAeA7",
     chainId: 11155111,
+    name: "Ethereum",
   },
   {
     chain: "Arbitrum",
     bridge: "0xCE2330E60c6cDf86eb77745a52334193c07F1Da9",
     chainId: 421614,
+    name: "Arbitrum",
   },
   {
     chain: "BSC",
     bridge: "0xcD411d9E5543B12b1d87DDDc1F949Bd5fc800253",
     chainId: 97,
+    name: "BSC",
   },
   {
     chain: "Bitlayer",
     bridge: "0xCE2330E60c6cDf86eb77745a52334193c07F1Da9",
     chainId: 200810,
+    name: "Bitlayer",
   },
   {
     chain: "LayerEdge",
     bridge: "0xCE2330E60c6cDf86eb77745a52334193c07F1Da9",
     chainId: 3456,
+    name: "LayerEdge",
+  },
+  {
+    chain: "GMNetwork",
+    bridge: "0xCE2330E60c6cDf86eb77745a52334193c07F1Da9",
+    chainId: 202402181627,
+    name: "GM Network",
   },
 ];
 
@@ -33,6 +44,7 @@ export const chains: Chain[] = [
   "BSC",
   "Bitlayer",
   "LayerEdge",
+  "GMNetwork",
 ];
 
 export const getChainIcon = (chain: Chain) => {
@@ -51,6 +63,8 @@ export const getChainIcon = (chain: Chain) => {
       return "lbtc.png";
     case "layeredge":
       return "le.svg";
+    case "gmnetwork":
+      return "gm.png";
     default:
       return undefined;
   }

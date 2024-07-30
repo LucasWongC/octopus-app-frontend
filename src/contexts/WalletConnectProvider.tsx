@@ -18,12 +18,20 @@ import {
   testnet as bitlayerTestnet,
 } from "@/config/bitlayer";
 import { testnet as layerEdgeTestnet } from "@/config/layeredge";
+import { testnet as gmTestnet } from "@/config/gmNetwork";
 
 const config = getDefaultConfig({
   appName: "Octopus",
   projectId: walletConnectProjectId,
   chains: isDevelopment
-    ? [sepolia, arbitrumSepolia, bscTestnet, bitlayerTestnet, layerEdgeTestnet]
+    ? [
+        sepolia,
+        arbitrumSepolia,
+        bscTestnet,
+        bitlayerTestnet,
+        layerEdgeTestnet,
+        gmTestnet,
+      ]
     : [mainnet, arbitrum, bsc, bitlayerMainnet],
   transports: {
     [sepolia.id]: http("https://endpoints.omniatech.io/v1/eth/sepolia/public"),
@@ -37,6 +45,7 @@ const config = getDefaultConfig({
     [arbitrum.id]: http("https://api.zan.top/node/v1/arb/one/public"),
     [bsc.id]: http("https://koge-rpc-bsc.48.club"),
     [bitlayerMainnet.id]: http("https://rpc-bitlayer.rockx.com"),
+    [gmTestnet.id]: http("https://gmnetwork-testnet.alt.technology"),
   },
   ssr: false, // If your dApp uses server side rendering (SSR)
 });

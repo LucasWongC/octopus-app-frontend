@@ -4,12 +4,14 @@ type Chain =
   | "Arbitrum"
   | "BSC"
   | "Bitlayer"
-  | "LayerEdge";
+  | "LayerEdge"
+  | "GMNetwork";
 
 type ChainConfig = {
   chain: Chain;
   bridge: `0x${string}`;
   chainId: number;
+  name: string;
 };
 
 type Currency = {

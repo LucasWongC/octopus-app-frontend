@@ -1,7 +1,7 @@
 "use client";
 
 import Pagination from "@/components/explorer/Pagination";
-import { getChainIcon } from "@/config/chain";
+import { evmChains, getChainIcon } from "@/config/chain";
 import { tokens } from "@/config/tokens";
 import { getTxList } from "@/helpers/api";
 import { getExplorerUrl, toLocalTime, truncate } from "@/helpers/utils";
@@ -141,7 +141,12 @@ const ExplorerPage = () => {
                       token.address == tx.toToken
                   )[0];
 
-                  console.log(tx, fromToken, toToken);
+                  const fromEvmChain = evmChains.filter(
+                    (item) => item.chain == tx.fromChain
+                  )?.[0];
+                  const toEvmChain = evmChains.filter(
+                    (item) => item.chain == tx.toChain
+                  )?.[0];
 
                   return (
                     <tr
@@ -236,7 +241,8 @@ const ExplorerPage = () => {
                                 className="w-5 h-5 shrink-0"
                                 alt="icon"
                               />
-                              {fromToken.symbol} ({tx.fromChain})
+                              {fromToken.symbol} (
+                              {fromEvmChain?.name ?? tx.fromChain})
                             </div>
                           </div>
                         </div>
@@ -258,7 +264,8 @@ const ExplorerPage = () => {
                                 className="w-5 h-5 shrink-0"
                                 alt="icon"
                               />
-                              {toToken.symbol} ({tx.toChain})
+                              {toToken.symbol} ({toEvmChain?.name ?? tx.toChain}
+                              )
                             </div>
                           </div>
                         </div>
