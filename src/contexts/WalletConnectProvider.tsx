@@ -16,9 +16,10 @@ import { isDevelopment, walletConnectProjectId } from "@/config";
 import {
   mainnet as bitlayerMainnet,
   testnet as bitlayerTestnet,
-} from "@/config/bitlayer";
-import { testnet as layerEdgeTestnet } from "@/config/layeredge";
-import { testnet as gmTestnet } from "@/config/gmNetwork";
+} from "@/config/networks/bitlayer";
+import { testnet as layerEdgeTestnet } from "@/config/networks/layeredge";
+import { testnet as gmTestnet } from "@/config/networks/gmNetwork";
+import { testnet as aiLayerTestnet } from "@/config/networks/aiLayer";
 
 const config = getDefaultConfig({
   appName: "Octopus",
@@ -31,6 +32,7 @@ const config = getDefaultConfig({
         bitlayerTestnet,
         layerEdgeTestnet,
         gmTestnet,
+        aiLayerTestnet,
       ]
     : [mainnet, arbitrum, bsc, bitlayerMainnet],
   transports: {
@@ -46,6 +48,7 @@ const config = getDefaultConfig({
     [bsc.id]: http("https://koge-rpc-bsc.48.club"),
     [bitlayerMainnet.id]: http("https://rpc-bitlayer.rockx.com"),
     [gmTestnet.id]: http("https://gmnetwork-testnet.alt.technology"),
+    [aiLayerTestnet.id]: http("https://testnet-rpc.ailayer.xyz/"),
   },
   ssr: false, // If your dApp uses server side rendering (SSR)
 });

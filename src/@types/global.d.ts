@@ -5,7 +5,8 @@ type Chain =
   | "BSC"
   | "Bitlayer"
   | "LayerEdge"
-  | "GMNetwork";
+  | "GMNetwork"
+  | "AILayer";
 
 type ChainConfig = {
   chain: Chain;

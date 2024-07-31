@@ -133,4 +133,15 @@ export const tokens: Currency[] = [
     max: 0.05,
     min: 0.001,
   },
+  {
+    id: "AILayer",
+    chain: "AILayer",
+    name: "Bitcoin",
+    symbol: "BTC",
+    decimals: 18,
+    address: zeroAddress,
+    icon: "btc.svg",
+    max: 0.05,
+    min: 0.001,
+  },
 ];

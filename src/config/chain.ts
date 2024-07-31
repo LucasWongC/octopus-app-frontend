@@ -35,6 +35,12 @@ export const evmChains: ChainConfig[] = [
     chainId: 202402181627,
     name: "GM Network",
   },
+  {
+    chain: "AILayer",
+    bridge: "0xCE2330E60c6cDf86eb77745a52334193c07F1Da9",
+    chainId: 2648,
+    name: "AILayer",
+  },
 ];
 
 export const chains: Chain[] = [
@@ -45,6 +51,7 @@ export const chains: Chain[] = [
   "Bitlayer",
   "LayerEdge",
   "GMNetwork",
+  "AILayer",
 ];
 
 export const getChainIcon = (chain: Chain) => {
@@ -65,6 +72,8 @@ export const getChainIcon = (chain: Chain) => {
       return "le.svg";
     case "gmnetwork":
       return "gm.png";
+    case "ailayer":
+      return "ai.png";
     default:
       return undefined;
   }
