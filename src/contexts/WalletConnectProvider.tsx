@@ -36,7 +36,7 @@ const config = getDefaultConfig({
       ]
     : [mainnet, arbitrum, bsc, bitlayerMainnet],
   transports: {
-    [sepolia.id]: http("https://endpoints.omniatech.io/v1/eth/sepolia/public"),
+    [sepolia.id]: http("https://ethereum-sepolia-rpc.publicnode.com"),
     [arbitrumSepolia.id]: http(
       "https://public.stackup.sh/api/v1/node/arbitrum-sepolia"
     ),
