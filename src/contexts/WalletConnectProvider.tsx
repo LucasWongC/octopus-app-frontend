@@ -20,6 +20,7 @@ import {
 import { testnet as layerEdgeTestnet } from "@/config/networks/layeredge";
 import { testnet as gmTestnet } from "@/config/networks/gmNetwork";
 import { testnet as aiLayerTestnet } from "@/config/networks/aiLayer";
+import { testnet as bevmTestnet } from "@/config/networks/bevm";
 
 const config = getDefaultConfig({
   appName: "Octopus",
@@ -33,13 +34,12 @@ const config = getDefaultConfig({
         layerEdgeTestnet,
         gmTestnet,
         aiLayerTestnet,
+        bevmTestnet,
       ]
     : [mainnet, arbitrum, bsc, bitlayerMainnet],
   transports: {
     [sepolia.id]: http("https://ethereum-sepolia-rpc.publicnode.com"),
-    [arbitrumSepolia.id]: http(
-      "https://public.stackup.sh/api/v1/node/arbitrum-sepolia"
-    ),
+    [arbitrumSepolia.id]: http("https://sepolia-rollup.arbitrum.io/rpc"),
     [bscTestnet.id]: http("https://bsc-testnet-rpc.publicnode.com"),
     [bitlayerTestnet.id]: http("https://testnet-rpc.bitlayer.org"),
     [layerEdgeTestnet.id]: http("https://testnet-rpc.layeredge.io"),
@@ -47,8 +47,9 @@ const config = getDefaultConfig({
     [arbitrum.id]: http("https://api.zan.top/node/v1/arb/one/public"),
     [bsc.id]: http("https://koge-rpc-bsc.48.club"),
     [bitlayerMainnet.id]: http("https://rpc-bitlayer.rockx.com"),
-    [gmTestnet.id]: http("https://gmnetwork-testnet.alt.technology"),
+    // [gmTestnet.id]: http("https://gmnetwork-testnet.alt.technology"),
     [aiLayerTestnet.id]: http("https://testnet-rpc.ailayer.xyz/"),
+    [bevmTestnet.id]: http("https://testnet.bevm.io/rpc"),
   },
   ssr: false, // If your dApp uses server side rendering (SSR)
 });

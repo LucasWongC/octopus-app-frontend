@@ -29,17 +29,23 @@ export const evmChains: ChainConfig[] = [
     chainId: 3456,
     name: "LayerEdge",
   },
-  {
-    chain: "GMNetwork",
-    bridge: "0xCE2330E60c6cDf86eb77745a52334193c07F1Da9",
-    chainId: 202402181627,
-    name: "GM Network",
-  },
+  // {
+  //   chain: "GMNetwork",
+  //   bridge: "0xCE2330E60c6cDf86eb77745a52334193c07F1Da9",
+  //   chainId: 202402181627,
+  //   name: "GM Network",
+  // },
   {
     chain: "AILayer",
     bridge: "0xCE2330E60c6cDf86eb77745a52334193c07F1Da9",
     chainId: 2648,
     name: "AILayer",
+  },
+  {
+    chain: "BEVM",
+    bridge: "0xCE2330E60c6cDf86eb77745a52334193c07F1Da9",
+    chainId: 11503,
+    name: "BEVM",
   },
 ];
 
@@ -50,8 +56,9 @@ export const chains: Chain[] = [
   "BSC",
   "Bitlayer",
   "LayerEdge",
-  "GMNetwork",
+  // "GMNetwork",
   "AILayer",
+  "BEVM",
 ];
 
 export const getChainIcon = (chain: Chain) => {
@@ -74,6 +81,8 @@ export const getChainIcon = (chain: Chain) => {
       return "gm.png";
     case "ailayer":
       return "ai.png";
+    case "bevm":
+      return "bevm.png";
     default:
       return undefined;
   }

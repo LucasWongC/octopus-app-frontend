@@ -32,7 +32,13 @@ export const getExplorerUrl = (chain: Chain) => {
       case "bitcoin":
         return "https://mempool.space/testnet/";
       case "layeredge":
-        return "https://testnet-explorer.layeredge.io";
+        return "https://testnet-explorer.layeredge.io/";
+      case "ailayer":
+        return "https://testnet-explorer.ailayer.xyz/";
+      case "bevm":
+        return "https://scan-testnet.bevm.io/";
+      case "gmnetwork":
+        return "https://gmnetwork-testnet-explorer.alt.technology/";
     }
   } else {
     switch (chainNameLowerCase) {
