@@ -47,6 +47,12 @@ export const evmChains: ChainConfig[] = [
     chainId: 11503,
     name: "BEVM",
   },
+  {
+    chain: "Berachain",
+    bridge: "0xCE2330E60c6cDf86eb77745a52334193c07F1Da9",
+    chainId: 80084,
+    name: "Berachain",
+  },
 ];
 
 export const chains: Chain[] = [
@@ -59,6 +65,7 @@ export const chains: Chain[] = [
   // "GMNetwork",
   "AILayer",
   "BEVM",
+  "Berachain",
 ];
 
 export const getChainIcon = (chain: Chain) => {
@@ -83,6 +90,8 @@ export const getChainIcon = (chain: Chain) => {
       return "ai.png";
     case "bevm":
       return "bevm.png";
+    case "berachain":
+      return "bera.svg";
     default:
       return undefined;
   }

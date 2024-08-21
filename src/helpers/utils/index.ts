@@ -39,6 +39,8 @@ export const getExplorerUrl = (chain: Chain) => {
         return "https://scan-testnet.bevm.io/";
       case "gmnetwork":
         return "https://gmnetwork-testnet-explorer.alt.technology/";
+      case "berachain":
+        return "https://bartio.beratrail.io/";
     }
   } else {
     switch (chainNameLowerCase) {

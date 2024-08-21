@@ -7,7 +7,8 @@ type Chain =
   | "LayerEdge"
   | "GMNetwork"
   | "AILayer"
-  | "BEVM";
+  | "BEVM"
+  | "Berachain";
 
 type ChainConfig = {
   chain: Chain;

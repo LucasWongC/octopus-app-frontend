@@ -21,6 +21,7 @@ import { testnet as layerEdgeTestnet } from "@/config/networks/layeredge";
 import { testnet as gmTestnet } from "@/config/networks/gmNetwork";
 import { testnet as aiLayerTestnet } from "@/config/networks/aiLayer";
 import { testnet as bevmTestnet } from "@/config/networks/bevm";
+import { testnet as berachainTestnet } from "@/config/networks/berachain";
 
 const config = getDefaultConfig({
   appName: "Octopus",
@@ -35,6 +36,7 @@ const config = getDefaultConfig({
         gmTestnet,
         aiLayerTestnet,
         bevmTestnet,
+        berachainTestnet,
       ]
     : [mainnet, arbitrum, bsc, bitlayerMainnet],
   transports: {
@@ -50,6 +52,7 @@ const config = getDefaultConfig({
     // [gmTestnet.id]: http("https://gmnetwork-testnet.alt.technology"),
     [aiLayerTestnet.id]: http("https://testnet-rpc.ailayer.xyz/"),
     [bevmTestnet.id]: http("https://testnet.bevm.io/rpc"),
+    [berachainTestnet.id]: http("https://bartio.rpc.berachain.com/"),
   },
   ssr: false, // If your dApp uses server side rendering (SSR)
 });

@@ -155,4 +155,15 @@ export const tokens: Currency[] = [
     max: 0.05,
     min: 0.001,
   },
+  {
+    id: "BERA",
+    chain: "Berachain",
+    name: "BERA",
+    symbol: "BERA",
+    decimals: 18,
+    address: zeroAddress,
+    icon: "bera.svg",
+    max: 0.5,
+    min: 0.01,
+  },
 ];
