@@ -23,12 +23,12 @@ export const evmChains: ChainConfig[] = [
     chainId: 200810,
     name: "Bitlayer",
   },
-  {
-    chain: "LayerEdge",
-    bridge: "0xCE2330E60c6cDf86eb77745a52334193c07F1Da9",
-    chainId: 3456,
-    name: "LayerEdge",
-  },
+  // {
+  //   chain: "LayerEdge",
+  //   bridge: "0xCE2330E60c6cDf86eb77745a52334193c07F1Da9",
+  //   chainId: 3456,
+  //   name: "LayerEdge",
+  // },
   // {
   //   chain: "GMNetwork",
   //   bridge: "0xCE2330E60c6cDf86eb77745a52334193c07F1Da9",
@@ -61,7 +61,7 @@ export const chains: Chain[] = [
   "Arbitrum",
   "BSC",
   "Bitlayer",
-  "LayerEdge",
+  // "LayerEdge",
   // "GMNetwork",
   "AILayer",
   "BEVM",
